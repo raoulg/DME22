@@ -9,7 +9,7 @@ logger.add("logging.log")
 
 @click.command()
 @click.option("--file")
-def main(file: str):
+def main(file: str) -> None:
     presets = Settings()
     filename = (presets.datadir / file).absolute()
 
