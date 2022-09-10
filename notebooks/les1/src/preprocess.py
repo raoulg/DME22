@@ -1,6 +1,7 @@
 import re
 from datetime import datetime
 from pathlib import Path
+from typing import List
 
 import pandas as pd
 from loguru import logger
@@ -14,9 +15,9 @@ def clean_name(msg: str) -> str:
     return re.search(reg, msg).group()
 
 
-def clean_file(filename: Path, presets: Settings):
-    namecol = presets.namecol
-    outputdir = presets.outputdir
+def clean_file(filename: Path, presets: Settings) -> None:
+    namecol: str = presets.namecol
+    outputdir: Path = presets.outputdir
     logger.info(f"reading file {filename}")
     df = pd.read_csv(filename)
 
@@ -24,13 +25,13 @@ def clean_file(filename: Path, presets: Settings):
     df[namecol] = df[namecol].apply(clean_name)
 
     logger.info(f"Dropping nas")
-    select = list(df.isna().sum() > 0)
-    before = len(df)
+    select: List[bool] = list(df.isna().sum() > 0)
+    before: int = len(df)
     df = df.dropna(subset=df.columns[select], axis="rows")
-    after = len(df)
+    after: int = len(df)
     logger.info(f"Dropped {before-after} rows.")
 
-    tag = datetime.now().strftime("%Y%m%d-%H%M") + ".csv"
+    tag: str = datetime.now().strftime("%Y%m%d-%H%M") + ".csv"
     output = outputdir / tag
     logger.info(f"Writing file to {output}")
     df.to_csv(output, index=False)
