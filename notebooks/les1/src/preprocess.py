@@ -8,6 +8,8 @@ from loguru import logger
 
 from settings import Settings
 
+# precompiling the regex is good practice
+# it speeds things up
 reg = re.compile("^[\w]+")
 
 
