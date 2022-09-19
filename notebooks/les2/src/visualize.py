@@ -44,7 +44,7 @@ def boxplots(df, presets, save: bool, ax=None):
 def linearmodel(df, presets, save: bool):
     args = presets.scatter
     sns.lmplot(data=df, x = args["x"], y = args["y"], hue=presets.target,
-    lowess=True, scatter_kws={'facecolors':'none', 'alpha':0.3}, palette=presets.palette)
+    lowess=False, ci=98, scatter_kws={'facecolors':'none', 'alpha':0.3}, palette=presets.palette)
     if save:
         plt.title(presets.title)
         savefig("linearmodel_", presets.imagedir)
