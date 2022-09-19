@@ -1,0 +1,30 @@
+---
+title: "Iris report"
+author: "Raoul Grouls"
+format:
+  pdf:
+    toc: true
+---
+
+
+# Overview
+Looking at @fig-scatter, we can see that the setosa and versicolor can overlap in terms of sepal length.
+
+However, for a given sepal length, setosa will typically have wider leaves.
+
+![scatterplot](img/scatter_20220919-1150.png){#fig-scatter}
+
+# Linear model
+
+If we use a linear regression model, we can see that the 98% confidence in @fig-linear strongly suggests
+that the setosa grows much faster in width than the other two species.
+
+![linear model](img/linearmodel_20220919-1314.png){#fig-linear}
+
+# Boxplot
+
+If we divide the width by the length for every leave, this is confirmed again by the histogram in @fig-hist
+Setosa will, on average, gain 0.7 width units for every unit in length it grows, while both versicolor and virginica grow about 0.4-0.5.
+
+![histogram](img/growth_20220919-1151.png){#fig-hist}
+

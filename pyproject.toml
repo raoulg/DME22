@@ -19,6 +19,8 @@ logger = "^1.4"
 loguru = "^0.6.0"
 plotly-express = "^0.4.1"
 quarto = "^0.1.0"
+pyarrow = "^9.0.0"
+fitter = "^1.5.1"
 
 
 [tool.poetry.group.dev.dependencies]
