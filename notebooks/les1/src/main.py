@@ -1,13 +1,9 @@
 import click
-from loguru import logger
 
 # this imports the complete preprocess.py file namespace
 import preprocess
 # this imports from the settings.py file
-from settings import Settings
-
-# this logs to a file
-logger.add("logging.log")
+from settings import logger, settings
 
 
 # this processes the command line arguments as parameters for your function
@@ -15,7 +11,7 @@ logger.add("logging.log")
 @click.option("--file")
 def main(file: str) -> None:
     # initializing settings.Settings()
-    presets = Settings()
+    presets = settings
     filename = (presets.datadir / file).absolute()
 
     if not filename.exists():
