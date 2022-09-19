@@ -2,5 +2,5 @@
 *.pyc
 __pychache__/
 *.ipynb_checkpoints
-*.qmd
 *.DS_Store
+*.vscode
