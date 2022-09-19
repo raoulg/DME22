@@ -1,0 +1,308 @@
+---
+title: "Distributions"
+author: "Raoul Grouls"
+format:
+  revealjs:
+    theme: solarized
+---
+
+
+## Overview {.smaller}
+
+- Distributions
+	- difference between discrete and continuous
+	- mass vs density functions
+- Discrete
+	- Bernoulli
+	- Uniform
+	- Poisson
+- Continuous
+	- Normal (Gaussian)
+	- Exponential
+	- Beta
+
+## Overview
+- Modelling
+	- Motivation
+	- Epistemic vs Aleatoric
+	- Modelling under uncertainty
+
+# Distributions
+
+## Distributions
+
+:::: {.columns}
+
+::: {.column width="40%"}
+![](img/galton_box.jpeg)
+:::
+
+::: {.column width="60%"}
+*A probability distribution is:*
+
+a mathematical description
+
+::: {.fragment}
+of a random phenomenon
+:::
+
+::: {.fragment}
+in terms of all its possible outcomes
+:::
+
+::: {.fragment}
+and their associated probabilities
+:::
+
+:::
+
+::::
+
+## Distributions: types
+The main types of distributions are:
+
+- **Discrete** : when an outcome can only take discrete values (e.g. number of birds)
+- **Continuous** : when outcomes take continuous values (e.g. blood pressure)
+
+## Distributions: PMF
+
+A **probability mass function** (pmf) describes the probability distribution of discrete variables.
+
+Consider a toin coss:
+
+$$
+f(x) = \begin{cases}
+  0.5  & x \text{ is head} \\
+  0.5 & x \text{ is tails}
+\end{cases}
+$$
+
+This is the pmf of the *Bernoulli distribution*
+
+## Conditions for a pmf
+
+::: {.fragment}
+1. An event cannot have a negative probability
+:::
+
+::: {.fragment}
+2. The sum of probabilities of all events must be 1
+:::
+
+::: {.fragment}
+3. The probability of a subset $X$ of outcomes $T$ is the same as adding the probabilities of the individual elements. 
+:::
+
+## Conditions for a pmf{.smaller}
+### Mathematical description
+The probability is a function $f$ over the sample space $\mathscr{S}$ of a discrete random variable $X$, which gives the probability that $X$ is equal to a certain value.
+$$f(x) = P(X = x)$$
+
+Each pmf satisfies these conditions:
+$$
+\begin{align}
+f(x) \geq 0 \forall x \in X\\
+\Sigma_{x \in \mathscr{S}} f(x) = 1
+\end{align}
+$$
+
+for a collection $\mathscr{A}$
+$$P(\mathscr{A} \in \mathscr{S}) =\Sigma_{t_i \in \mathscr{A}} f(t)$$
+
+## Conditions for a pdf
+
+::: {.fragment}
+1. $f(x) > 0 \forall x \in X$
+:::
+
+::: {.fragment}
+2. The integral of the probabilities of all possible events must be 1
+:::
+
+::: {.fragment}
+3. The probability $X$ of values in the interval $[a,b]$ is the integral from $a$ to $b$
+:::
+
+## Conditions for a pdf
+
+This might look like unnecessary mathematical details.
+But it is actually important to understand the difference.
+
+Example: can you answer the question "What is the probability your body temperature is 37.0 C?"
+
+::: {.fragment .highlight-red .fade-in}
+The answer might be unexpected: 0!
+:::
+
+
+::: {.fragment .fade-in-then-out}
+Let's say your answer is 25%. But what if your temperature is 37.1? does that count?
+Or 37.01?
+:::
+
+::: {.fragment}
+Because the distribution is *continuous* you can only say something about the *range*
+"What is the probability your temperature is between 36.5 and 37.2 C?"
+:::
+
+## Quiz time
+
+[quiz](https://create.kahoot.it/share/stats/51f72129-94f2-4082-9e36-4df78a4013f5)
+
+
+# Discrete
+
+## Bernoulli
+
+:::: {.columns}
+::: {.column width="40%"}
+![](img/bernoulli.png)
+:::
+
+::: {.column width="60%"}
+- used to model binary events, like a coin toss
+- there is just one parameter $p$
+
+The pmf is:
+$$
+f(x) = \begin{cases}
+  p  & x \text{ is head} \\
+  1-p & x \text{ is tails}
+\end{cases}
+$$
+:::
+::::
+
+## Uniform{.smaller}
+
+
+:::: {.columns}
+::: {.column width="40%"}
+![](img/uniform.png)
+:::
+
+::: {.column width="60%"}
+- this is a mathematical way of saying: "I have no clue what will happen, so let's make no assumptions"
+- Everything has an equal probability
+- If you have 10 options, every option has a 1/10 chance
+- there is also a continuous varation of this distribution
+
+The pmf is:
+$$ f(n) = \frac{1}{n}$$
+:::
+::::
+
+
+## Poisson{.smaller}
+
+
+:::: {.columns}
+::: {.column width="40%"}
+![](img/poisson.png)
+:::
+
+::: {.column width="60%"}
+- the probability of the number of times an event occurs in a *fixed interval of time*
+- the events must occur with a *constant rate*
+
+What about the number of calls in a call center per day?
+
+::: {.fragment}
+No, it is probably not *constant*!
+How would you fix this?
+:::
+
+There is one parameter $\lambda \in (0, \inf)$
+
+The pmf is:
+$$ f(X=k) = \frac{\lambda e^{- \lambda}}{k!}$$
+:::
+::::
+
+## Quiz
+quiz time!
+
+# Continuous
+
+## Normal Distribution
+
+:::: {.columns}
+::: {.column width="40%"}
+![](img/20220914-1840.png)
+![](img/dice.png)
+:::
+
+::: {.column width="50%"}
+This is one of the distributions that is used most often.
+
+A major reason for this is, that if you keep sampling from a population you
+*always* end up with a normal distribution.
+:::
+::::
+
+## Normal Distribution
+The normal distribution has two parameters:
+- mean
+- standard deviation
+The most basic form of the pdf is $f(x) =e^{-(x)^2}$.
+
+To make the area under the curve sum to 1 we add $\frac{1}{\sqrt{2\pi}}$.
+To get unit variance ($\sigma^2 = 1$) we add the $\frac{1}{2}$ to the exponent.
+
+The full pdf is:
+$$
+f(x) = \frac{1}{\sqrt{2 \pi}}e^{-\frac{1}{2}(x)^2}
+$$
+
+## Normal Distribution
+We can translate by $\mu$ and stretch by $\sigma$:
+$$
+f(x; \mu, \sigma) = \frac{1}{\sigma\sqrt{2 \pi}}e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}
+$$
+
+## Exponential
+
+:::: {.columns}
+::: {.column width="40%"}
+![](img/exponential.png)
+:::
+
+
+::: {.column width="60%"}
+The exponential distribution is connected to the Poisson distribution.
+
+You can use it to *model the time between independent events in a Poisson process*
+:::
+::::
+
+## Exponential
+
+The assumption of a constant rate is rarely satisfied, but for our models it is often a good enough approximation. A trick is to focus on a limited timeinterval for which the constant rate does hold.
+
+the pdf:
+$$f(x, \lambda) = \lambda e^{-\lambda x}$$
+
+## Beta
+
+The beta distribution describes the *probability of probabilities*
+![](img/recursion.jpeg)
+
+## Beta
+
+Think of it as a description of your belief about a probability distribution.
+
+![](img/snow.png){fig-widht="400"}
+
+## Beta
+
+There are two parameters, $\alpha$ and $\beta$.
+
+The pdf is a bit complex:
+
+$$f(x; \alpha, \beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}$$
+
+# Statistical Modelling
+
+Why?
+
+## Quiz
