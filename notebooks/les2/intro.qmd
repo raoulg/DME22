@@ -1,0 +1,54 @@
+---
+title: "Intro les 2"
+author: "Raoul Grouls
+format:
+  pdf:
+    toc: true
+---
+
+
+First, you will need to make sure you have the latest changes. 
+To do that, you cd to the DME22 directory on your VM.
+
+# Clean working tree
+
+Once you are there, you can run `git status` to check your branch. 
+Your branch should be clean before you checkout to master!
+if not, make sure you are in another branch than the master branch, and either `git add` and `git commit` the things you want to keep,
+or remove the changes.
+
+A fast way to revert all the changes you dont want to keep, is: `git checkout -- .`
+
+Ok, assuming everything is clean, you should get a message like this:
+```{bash}
+   On branch feature/les3
+   Your branch is up to date with 'origin/feature/les3'.
+   nothing to commit, working tree clean
+```
+
+## Git pull
+Now, checkout to master and pull the latest changes.
+   $git checkout master
+You should see a message that looks like:
+   Switched to branch 'master'
+   Your branch is behind 'origin/master' by 15 commits, and can be fast-forwarded.
+     (use "git pull" to update your local branch)
+So, lets do that:
+$git pull
+You will get a full report of all the files we have changed and added since last time you pulled. If you want to check that out in more detail, you can either use Git Graph inside VSCode, or you can use the command line with a command like git log --stat --oneline. You exit this view by pressing q.
+1
+    
+Using Quarto
+Quarto is an “academic, scientific, and technical publishing system built on Pandoc.” It is a very easy way to make nice reports, presentations etc from markdown files.
+If you want to install it locally too, you can simply download an installer from their website. However, on the server we can’t click on anything so we will need to do that with the command line. It’s not that diﬀicult:
+1. Go to the home directory by cd ~
+2. Downloadthelatestversionwithsudocurl-LOhttps://quarto.org/download/latest/quarto-linux
+3. Enter your VM password (that you wrote down somewhere during the setup of your VM)
+to start the download.
+4. To install this .deb file, we need gdebi. You can check if you have it with which gdebi.
+You probably don’t have it on the server.
+5. We can install it with sudo apt install gdebi-core
+6. Andnowwecanusegdebitoinstallthe.debfilewithsudogdebiquarto-linux-amd64.deb
+7. To create pdfs, we need a latex distribution. You can install a minimal version of that
+with quarto install tool tinytex
+If you install the vscode-pdf extension in VS code, you can view the pdf with VScode by clicking on it.
