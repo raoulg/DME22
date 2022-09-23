@@ -17,7 +17,9 @@ def main(task: str, n: int
     if task == "clt":
         stats.central_limit(presets, n)
     if task == "simpsons":
-        stats.simulate_simpson(n, presets)
+        stats.simulate_simpson(presets)
+    if task == "beta":
+        stats.beta_examples(presets)
 
 
 if __name__ == "__main__":
