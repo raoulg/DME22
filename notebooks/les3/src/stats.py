@@ -6,6 +6,7 @@ import numpy as np
 from datetime import datetime
 from loguru import logger
 from typing import List
+from scipy import stats as scs
 
 def central_limit(presets, n: int):
     samples = []
@@ -44,7 +45,7 @@ def central_limit(presets, n: int):
     logger.info(f"Saved file to {filename}")
 
 
-def simulate_simpson(n: int, presets):
+def simulate_simpson(presets):
     groups = presets.groups
     difference = presets.difference
     slope = presets.slope
@@ -63,8 +64,11 @@ def simulate_simpson(n: int, presets):
     # gather everything from the list of lists
     x = np.concatenate([x for (x, y) in data])
     y = np.concatenate([y for (x, y) in data])
+
     # add group labels
-    groups = np.repeat(groups, n)
+    g = range(len(data))
+    n = len(x) / len(data)
+    groups = np.repeat(g, n)
     # and put in a dataframe
     df = pd.DataFrame({"x" : x, "y" : y, "group" : groups})
 
@@ -75,9 +79,24 @@ def simulate_simpson(n: int, presets):
     logger.info(f"Saved file to {filename}")
 
     # plot all subgroups
-    sns.lmplot(data=data, x="x", y="y", hue="group", ci=99)
+    sns.lmplot(data=df, x="x", y="y", hue="group", ci=99)
     filename = presets.imagedir /  ("sub_" + datetime.now().strftime("%Y%m%d-%H%M") + ".png")
     plt.savefig(filename)
     logger.info(f"Saved file to {filename}")
 
-    
+
+def beta_examples(presets):
+
+    fix, axs = plt.subplots(presets.subs[0], presets.subs[1], figsize=presets.figsize)
+    axs = axs.ravel()
+
+    for i, ab in enumerate(presets.pairs):
+        beta = scs.beta(ab[0], ab[1])
+        x = np.linspace(0, 1, 100)
+        y = beta.pdf(x)
+        axs[i].plot(x, y)
+        axs[i].set_title(f"Beta {ab}")
+    plt.tight_layout()
+    filename = presets.imagedir /  ("beta_" + datetime.now().strftime("%Y%m%d-%H%M") + ".png")
+    plt.savefig(filename)
+    logger.info(f"Saved file to {filename}")
