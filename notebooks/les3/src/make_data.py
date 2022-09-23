@@ -1,0 +1,36 @@
+from loguru import logger
+import numpy as np
+from pathlib import Path
+import pandas as pd
+
+
+def make_sine_wave(
+    filename: Path,
+    a: float = 3,
+    f: float = 2,
+    t: np.ndarray = np.linspace(0, 4, 100),
+    s: float = 0.2,
+) -> None:
+    if filename.exists():
+        logger.info(f"Data already generated in {filename}")
+    else:
+        noise = np.random.normal(scale=s, size=len(t))
+        v = a * np.sin(f * t) + noise
+        pd.DataFrame({"time": t, "value": v}).to_csv(filename, index=False)
+        logger.info(f"Data generated at {filename}.")
+    return filename
+
+
+def make_linear(
+    filename: Path, size: int = 100, a: float = 2, b: float = 4, s: float = 0.5
+):
+
+    if filename.exists():
+        logger.info(f"Data already generated in {filename}")
+    else:
+        x = np.linspace(0, 1, size)
+        noise = np.random.normal(scale=s, size=len(x))
+        y = a * x + b + noise
+        pd.DataFrame({"x": x, "y": y}).to_csv(filename, index=False)
+        logger.info(f"Data generated at {filename}.")
+    return filename
