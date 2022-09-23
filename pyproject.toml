@@ -21,6 +21,9 @@ plotly-express = "^0.4.1"
 quarto = "^0.1.0"
 pyarrow = "^9.0.0"
 fitter = "^1.5.1"
+scikit-learn = "^1.1.2"
+pymc = "~4.2.0"
+arviz = "^0.12.1"
 
 
 [tool.poetry.group.dev.dependencies]
