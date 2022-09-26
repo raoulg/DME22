@@ -1,12 +1,14 @@
-import scipy.stats as sps
-import pandas as pd
-import seaborn as sns
+from datetime import datetime
+from typing import List
+
 import matplotlib.pyplot as plt
 import numpy as np
-from datetime import datetime
+import pandas as pd
+import scipy.stats as sps
+import seaborn as sns
 from loguru import logger
-from typing import List
 from scipy import stats as scs
+
 
 def central_limit(presets, n: int):
     samples = []
@@ -19,7 +21,9 @@ def central_limit(presets, n: int):
 
     # create a square grid
     grid = int(np.ceil(np.sqrt(n)))
-    fig, axs = plt.subplots(grid, grid, figsize=presets.figsize, constrained_layout=True)
+    fig, axs = plt.subplots(
+        grid, grid, figsize=presets.figsize, constrained_layout=True
+    )
     axs = axs.ravel()
 
     # take a first sample of 100 items from the population
@@ -40,7 +44,7 @@ def central_limit(presets, n: int):
     fig.supylabel("Density")
 
     # save file
-    filename = presets.imagedir /  (datetime.now().strftime("%Y%m%d-%H%M") + ".png")
+    filename = presets.imagedir / (datetime.now().strftime("%Y%m%d-%H%M") + ".png")
     plt.savefig(filename)
     logger.info(f"Saved file to {filename}")
 
@@ -57,10 +61,10 @@ def simulate_simpson(presets):
         # draw some random numbers, scaled by var
         x = rng.random(n) * var
         # and make a linear relation
-        y = slope*x + rng.random(n)
+        y = slope * x + rng.random(n)
         # and move the group a difference amount
-        data.append([x + difference * i, y + difference  * (i * -np.sign(slope))])
-    
+        data.append([x + difference * i, y + difference * (i * -np.sign(slope))])
+
     # gather everything from the list of lists
     x = np.concatenate([x for (x, y) in data])
     y = np.concatenate([y for (x, y) in data])
@@ -70,17 +74,21 @@ def simulate_simpson(presets):
     n = len(x) / len(data)
     groups = np.repeat(g, n)
     # and put in a dataframe
-    df = pd.DataFrame({"x" : x, "y" : y, "group" : groups})
+    df = pd.DataFrame({"x": x, "y": y, "group": groups})
 
     # plot all groups
-    sns.lmplot(data=df, x="x", y="y", ci=99) 
-    filename = presets.imagedir /  ("all_ " + datetime.now().strftime("%Y%m%d-%H%M") + ".png")
+    sns.lmplot(data=df, x="x", y="y", ci=99)
+    filename = presets.imagedir / (
+        "all_ " + datetime.now().strftime("%Y%m%d-%H%M") + ".png"
+    )
     plt.savefig(filename)
     logger.info(f"Saved file to {filename}")
 
     # plot all subgroups
     sns.lmplot(data=df, x="x", y="y", hue="group", ci=99)
-    filename = presets.imagedir /  ("sub_" + datetime.now().strftime("%Y%m%d-%H%M") + ".png")
+    filename = presets.imagedir / (
+        "sub_" + datetime.now().strftime("%Y%m%d-%H%M") + ".png"
+    )
     plt.savefig(filename)
     logger.info(f"Saved file to {filename}")
 
@@ -97,6 +105,8 @@ def beta_examples(presets):
         axs[i].plot(x, y)
         axs[i].set_title(f"Beta {ab}")
     plt.tight_layout()
-    filename = presets.imagedir /  ("beta_" + datetime.now().strftime("%Y%m%d-%H%M") + ".png")
+    filename = presets.imagedir / (
+        "beta_" + datetime.now().strftime("%Y%m%d-%H%M") + ".png"
+    )
     plt.savefig(filename)
     logger.info(f"Saved file to {filename}")

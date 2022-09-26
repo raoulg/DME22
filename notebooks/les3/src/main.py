@@ -1,7 +1,7 @@
 import click
 from loguru import logger
-import stats
 
+import stats
 from settings import Settings
 
 logger.add("logging.log")
@@ -10,8 +10,7 @@ logger.add("logging.log")
 @click.command()
 @click.option("--task")
 @click.option("-n", type=int)
-def main(task: str, n: int
-) -> None:
+def main(task: str, n: int) -> None:
     presets = Settings()
     logger.info(f"starting {task} with {n}")
     if task == "clt":

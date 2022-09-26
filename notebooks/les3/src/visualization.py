@@ -1,9 +1,9 @@
 import matplotlib.pyplot as plt
+import seaborn as sns
 from fitter import Fitter, get_common_distributions
 from scipy import stats as scs
-from sklearn.inspection import DecisionBoundaryDisplay  
+from sklearn.inspection import DecisionBoundaryDisplay
 from sklearn.model_selection import train_test_split
-import seaborn as sns
 
 
 def custom_summary(f: Fitter, ax, nbest: int = 5):
@@ -50,4 +50,3 @@ def inspect_model(model, X, y):
     model.fit(X_train, y_train)
     disp = DecisionBoundaryDisplay.from_estimator(model, X, alpha=0.4)
     sns.scatterplot(x=X.iloc[:, 0], y=X.iloc[:, 1], hue=y, ax=disp.ax_)
-
