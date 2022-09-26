@@ -119,7 +119,6 @@ In this image, what do you expect to be:
 - all the possible outcomes?
 - the associated probabilities?
 
-
 :::
 
 ::::
@@ -264,8 +263,6 @@ He also discoverd the constant $e$ and published work on infinite series.
 :::
 
 ::::
-
-
 
 
 ## Bernoulli
@@ -477,13 +474,8 @@ The most basic form of the pdf is $$f(x) =e^{-(x)^2}$$
 - To make the area under the curve sum to 1 we add $\frac{1}{\sqrt{2\pi}}$.
 - To get unit variance ($\sigma^2 = 1$) we add the $\frac{1}{2}$ to the exponent.
 
-The full pdf is:
-$$
-f(x) = \frac{1}{\sqrt{2 \pi}}e^{-\frac{1}{2}(x)^2}
-$$
-
 ::: {.fragment}
-and, with parameters $\mu$ (mean) and $\sigma$ (standard deviation):
+The full pdf is:
 
 $$f(x; \mu, \sigma) = \frac{1}{\sigma\sqrt{2 \pi}}e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}$$
 :::
@@ -622,6 +614,19 @@ $$f(x; \alpha, \beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta
 
 [^1]: From "Probabilistic Programming and Bayesian Methods for Hackers"
 
+## Epistemic vs Aleatoric
+
+- We consider $X$ as a random variable not because there is no single true value of $X$, but because we don’t know what the true value is.
+- Expressing $X$ as a random variable is our way to express our lack of knowledge about the true value of $X$
+
+
+## Epistemic vs Aleatoric
+
+- Uncertainty that is due to lack of knowledge is called *epistemic* uncertainty
+- There is also uncertainty that you will never overcome, the exact value of your next cointoss.This type of randomness/variability is called aleatoric uncertainty and is represented by the noise parameter $\epsilon$
+
+It is important to discern between the two! There are limits to what you can do with your models!
+
 ## Models {.smaller}
 
 A model has parameters.
@@ -720,5 +725,4 @@ and the $y$ axis is the average grade of a student.
 :::
 ::::
 
-## Quiz
 
