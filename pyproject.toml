@@ -6,7 +6,7 @@ authors = ["Your Name <you@example.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "~3.9"
+python = ">=3.9,<3.9.7 || >3.9.7,<3.10" # 3.9.7 does not work with streamlit
 pandas = "^1.4.4"
 numpy = "^1.23.3"
 scipy = "^1.9.1"
@@ -24,6 +24,8 @@ fitter = "^1.5.1"
 scikit-learn = "^1.1.2"
 pymc = "~4.2.0"
 arviz = "^0.12.1"
+streamlit = "^1.13.0"
+watchdog = "^2.1.9"
 
 
 [tool.poetry.group.dev.dependencies]

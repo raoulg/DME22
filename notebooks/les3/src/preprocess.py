@@ -33,5 +33,3 @@ def prepare_floats(filename, modelsettings) -> pl.DataFrame:
     )  # to normalize the data
 
     return p
-
-
