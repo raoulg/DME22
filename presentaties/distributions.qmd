@@ -602,7 +602,7 @@ $$f(x; \alpha, \beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta
 
 ## Motivation
 
-> People thing in terms of stories - thus the unreasonable power of the anecdote to drive decisio-making.[^1]
+> People think in terms of stories - thus the unreasonable power of the anecdote to drive decision-making.[^1]
 
 ## Motivation
 
@@ -620,12 +620,14 @@ $$f(x; \alpha, \beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta
 - Expressing $X$ as a random variable is our way to express our lack of knowledge about the true value of $X$
 
 
-## Epistemic vs Aleatoric
+## Epistemic vs Aleatoric {.smaller}
 
 - Uncertainty that is due to lack of knowledge is called *epistemic* uncertainty
-- There is also uncertainty that you will never overcome, the exact value of your next cointoss.This type of randomness/variability is called aleatoric uncertainty and is represented by the noise parameter $\epsilon$
+- There is also uncertainty that you will never overcome, the exact value of your next cointoss.This type of randomness/variability is called *aleatoric* uncertainty and is often represented by the noise parameter $\epsilon$
 
 It is important to discern between the two! There are limits to what you can do with your models!
+
+What is considered epistemic will shift as our science advances, and might depend on the context.
 
 ## Models {.smaller}
 
@@ -653,7 +655,6 @@ E.g.
 $$a \sim \mathscr{N}(\mu, \sigma)$$
 
 Meaning: the parameter $a$ follows a normal distribution with mean $\mu$ and standard deviation $\sigma$.
-
 
 ## Models {.smaller}
 
