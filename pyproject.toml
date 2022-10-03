@@ -26,6 +26,7 @@ pymc = "~4.2.0"
 arviz = "^0.12.1"
 streamlit = "^1.13.0"
 watchdog = "^2.1.9"
+pydeck = "^0.7.1"
 
 
 [tool.poetry.group.dev.dependencies]
