@@ -170,17 +170,15 @@ with chart_col:
     if len(selected_station_names) > 0:
         
         # Create the plot of the selected stations' temperature.
-        g = sns.relplot(
+        g = sns.lineplot(
             data=temperatures,
             x='date_time',
             y='temperature_degrees_celsius',
             hue='location',
-            kind='line',
-            height=2.8,
             linewidth=0.3
         )
-        g.set_axis_labels('Date/time', 'Temperature (°C)')
-        g.set(title=f'Temperature during {days_back} day(s) at selected stations')
+        # g.set_axis_labels('Date/time', 'Temperature (°C)')
+        # g.set(title=f'Temperature during {days_back} day(s) at selected stations')
         
         if is_user_location_specified():
             
