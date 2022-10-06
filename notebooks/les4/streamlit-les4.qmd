@@ -211,19 +211,19 @@ Add the following to your code:
 
 ```{python}
 # Create a (scatter) plot object.
-f, ax = mpl.subplots(1,1)
-h = sns.relplot(
+# f, ax = mpl.subplots(1,1)
+g = sns.relplot(
     ax=ax,
     data=penguins, 
     x='bill_length_mm', 
     y='bill_depth_mm', 
     hue='species'
 )
-h.set_axis_labels('Bill length (mm)', 'Bill depth (mm)')
-h.set(title='Bill length and depth correlation across species')
+g.set_axis_labels('Bill length (mm)', 'Bill depth (mm)')
+g.set(title='Bill length and depth correlation across species')
 
 # Add the object to the page.
-st.pyplot(h)
+st.pyplot(g)
 ```
 
 Note that style and details matter on a dashboard. We add a title, use legible axis labels and add units to quantities.

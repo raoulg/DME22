@@ -5,6 +5,7 @@ from pydantic import BaseSettings
 
 class _Settings(BaseSettings):
     root: Path = Path("~/code/DME22/").expanduser()
+    raw_data_dir: Path = Path('data/raw')
     processed_dir: Path = Path("data/processed/")
     filename: Path = Path("processed.parq")
     target: str = "species"
@@ -36,6 +37,6 @@ class _Settings(BaseSettings):
     knmi_stations_index_name:str = 'station_code'
     days_back: int = 3
     n_nearest_stations: int = 4
-
+    regex_practice_file = 'BWBR0047176-geldend_van_24-09-2022_tm_heden_zichtdatum_03-10-2022.txt'
 
 settings = _Settings()

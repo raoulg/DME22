@@ -4,3 +4,4 @@ __pychache__/
 *.ipynb_checkpoints
 *.DS_Store
 *.vscode
+*/**/libs/
