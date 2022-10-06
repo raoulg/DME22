@@ -1,0 +1,292 @@
+---
+title: "Quantitative ethics"
+author: "Raoul Grouls"
+format:
+  revealjs:
+    theme: solarized
+    slide-number: true
+    self-contained: true
+---
+
+
+# Overview {.smaller}
+
+
+## What could go wrong? {.smaller}
+
+:::: {.columns}
+
+::: {.column width="40%"}
+![](img/wrong.jpeg)
+:::
+
+::: {.column width="30%"}
+
+- data collection
+	- biased data
+	- measurement errors
+	- data quality
+- modelling
+	- data preparation
+	- assumptions
+	- model drift
+	- definitions of fairness
+:::
+
+
+::: {.column width="30%"}
+- interpretation
+	- simpsons paradox
+	- confusing correlation with causation
+	- incorrect interpretation
+- application
+	- unintended use
+:::
+
+::::
+
+# Datascience 
+
+![](img/datascience.png)
+
+## Data Problems - insufficient quality {.smaller}
+
+timeseries, 3 years monthly data
+
+that's just 150 datapoints...
+
+**solution** keep your model as simple as possible
+
+## Data Problems - nonrepresentative data {.smaller}
+
+*COMPAS* algorithm, used in US to predict recidivism for criminals
+
+Algorithm turned out to be racist: Blacks where misclassified twice as much
+
+> Cause: a questionnaire was used, in which the bias of society itself was reflected. E.g. both blacks and whites smoke as much marihuana (as can be measured in sewer water), but blacks are 10 times as likely to get a criminal record for this.
+
+**solution** test for bias on subgroups. Understand simpsons's paradox.
+
+## Data Problems - poor quality {.smaller}
+
+There is a correlation between weatherdata and sales. But the client needs predictions 8 weeks ahead.
+
+How do you get realistic predictions 8 weeks ahead?
+
+::: {.fragment}
+
+Answers: 
+
+a) you don't
+
+b) you create a linear regression model that predicts weather 8 weeks ahead
+
+:::
+
+::: {.fragment}
+**solution** be critical towards features. More is not always better. Talk to domain experts.
+:::
+
+## Data Problems - irrelevant features
+
+If you have 10.000 genes, but only 150 patients and you need to predict 3 types of cancer, you have too much features.
+
+**solution** prune features, reduce dimensionality, regularize your model
+
+## Data Problems - overfitting / underfitting {.smaller}
+
+Symptom: your data performs perfect in training, and fails in real life
+Cause: your model is too complex and "memorized" your trainingset.
+
+Question: How big is the observationspace (the number of possible observations) if you have
+25 features, each either a 0 or a 1?
+
+::: {.fragment}
+
+Answer: $2^{25}=3.3 * 10^7$
+
+:::
+
+**solution** learn to calculate the size of your searchspace and observationspace
+
+
+## Simpsons paradox
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](img/simpson1.png)
+:::
+
+::: {.column width="50%"}
+![](img/simpson3.png)
+:::
+
+::::
+
+# Causal Bayesian Networks {.smaller}
+
+## Ethical AI
+
+
+This is an active area of research.
+A lot of companies are busy moving their data to the cloud.
+
+::: {.fragment}
+When that is done, they often start using algorithms.
+:::
+
+::: {.fragment}
+And then the question arises: is this fair? And how do we know?
+:::
+
+![](img/ethical.png)
+
+## Graphs
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](img/graph.jpg)
+:::
+
+::: {.column width="50%"}
+We will look at Causal Bayesian Networks.
+
+Networks are represented as a graph.
+A graph $G$ is a pair $G = (V, E)$ where
+
+- $V$ is a set of nodes (or points)
+- $E$ is a set of edges $\{x, y\}$ with $x, y \in V$
+:::
+
+::::
+
+## {visibility="hidden"}
+
+```{dot}
+digraph G {
+
+	{rank=same gender qualification}
+	{rank=same department admission}
+
+  gender -> department;
+  department -> admission;
+  gender -> admission;
+  qualification -> admission;
+}
+```
+
+## Causal Networks
+
+Causal Bayesian Networks are popular tools used by the machine learning community to think about fairness.
+
+The arrow between nodes represent a causal relationship.
+The Bayesian part means every relationship has an associated probability.
+
+
+![](img/causal.png)
+
+## Causal Networks - Example
+
+:::: {.columns}
+
+::: {.column width="40%"}
+![](img/network.png)
+
+:::
+
+::: {.column width="50%"}
+
+
+Assume a college admisision scenario where:
+students with gender $G$ are admitted $A=\{0, 1\}$ based on 
+
+- qualifications $Q$
+- choice of department $D$
+
+:::
+::::
+
+
+## Causal Networks - Example
+
+
+:::: {.columns}
+
+::: {.column width="40%"}
+![](img/network.png)
+
+:::
+
+::: {.column width="50%"}
+
+
+- The causal path $G \to A$ represents a direct influence of gender. 
+- The indirect path $G \to D \to A$ represents that some genders apply more often to certain departments.
+
+
+:::
+
+::::
+
+## Causal Networks - Example
+
+:::: {.columns}
+
+::: {.column width="40%"}
+![](img/network.png)
+
+:::
+
+::: {.column width="50%"}
+
+- $G \to A$ will be considered unfair
+- $D \to A$ could be considered fair with respect to college responsibility
+- but $G \to D$ could be considered unfair with respect to societal responsibility
+
+:::
+
+::::
+
+
+## Causal Networks - Problems
+
+While this might sound very reasonable, and can be a very conscise way of talking about the complex networks of influences, there is an important caveat: the result is not what you would expect it to be.
+
+
+## Causal Networks - Problems
+
+
+> We then show, analytically and empirically, that [causal definitions of fairness]
+almost always result in strongly Pareto dominated decision policies[^1]
+
+Pareto dominated is a technical way of saying: there is a better choice for everyone involved.
+
+[^1]: Nilforoshan, H., Gaebler, J. D., Shroff, R., & Goel, S. (2022, June). Causal conceptions of fairness and their consequences. In International Conference on Machine Learning (pp. 16848-16887). PMLR.
+
+## Causal Networks 
+
+> ...  policies constrained to satisfy causal fairness definitions would be disfavored by every stakeholder
+
+::: {.fragment}
+> ...  there is an alternative feasible policy that simultaneously achieves greater student-body diversity and higher college degree attainment
+:::
+
+::: {.fragment}
+> ... we prove the resulting policies require admitting all students with the same probability, regardless of academic qualifications or group membership
+:::
+
+## Conclusion
+
+The combination of the Simpson's paradox and the fact that causal definition of fairness result in unfavorable solutions is problematic. 
+
+
+
+
+# References
+
+Chiappa, S., & Isaac, W. S. (2018, August). A causal Bayesian networks viewpoint on fairness. In IFIP International Summer School on Privacy and Identity Management (pp. 3-20). Springer, Cham.
+
+
+Nilforoshan, H., Gaebler, J. D., Shroff, R., & Goel, S. (2022, June). Causal conceptions of fairness and their consequences. In International Conference on Machine Learning (pp. 16848-16887). PMLR.
