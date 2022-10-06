@@ -1,0 +1,5 @@
+sudo apt update & sudo apt upgrade
+sudo reboot
+sudo apt-get install libopenblas-dev
+export CFLAGS="$CFLAGS -fPIC"
+pyenv install 3.9.13
