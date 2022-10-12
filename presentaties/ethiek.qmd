@@ -96,6 +96,7 @@ If you have 10.000 genes, but only 150 patients and you need to predict 3 types 
 ## Data Problems - overfitting / underfitting {.smaller}
 
 Symptom: your data performs perfect in training, and fails in real life
+
 Cause: your model is too complex and "memorized" your trainingset.
 
 Question: How big is the observationspace (the number of possible observations) if you have
