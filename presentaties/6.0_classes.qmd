@@ -1,0 +1,101 @@
+---
+title: Classes and object-oriented programming in Python
+author: Raoul Grouls & Jan-Willem Lankhaar
+format:
+    revealjs:
+        theme: dark
+        self-contained: true
+---
+
+In Python, everything is an object, i.e. a bundle of
+
+```{mermaid}
+flowchart LR
+    subgraph Object
+    direction LR
+    subgraph Data
+    end
+    subgraph Behavior
+    end
+    end
+```
+
+Behavior: functions or 'methods'
+
+---
+
+```{.python code-line-numbers="1|3|3-4|6|6-7"}
+s = "hello world"       # All lowercase!
+
+s.upper()
+# HELLO WORLD
+
+s.split(' ')
+#['Hello', 'world']
+```
+
+---
+
+Our variable `s` is an object of the class `str`
+
+- Its data: `hello world`
+- Its behavior (methods): `upper()`, `split()` etc.
+
+--- 
+
+Methods and variables of an object are called **attributes**
+
+---
+
+Another object:
+
+```{.python}
+
+x = 2.718281828459045
+
+type(x)
+# Float
+```
+
+The `type` function reveals the class of an object (i.e. its type).
+
+---
+
+Objects of different classes have different attributes:
+
+:::: {.columns}
+
+::: {.column}
+```{.python}
+type(x)
+# float
+
+dir(x)
+# ['__abs__',
+# '__add__',
+# ...
+# 'hex',
+# 'imag',
+# 'is_integer',
+# 'real']
+```
+::: 
+
+::: {.column}
+```{.python}
+type(s)
+# str
+
+dir(s)
+# ['__add__',
+#  '__class__',
+#  ...
+#  'title',
+#  'translate',
+#  'upper',
+#  'zfill']
+```
+
+:::
+::::
+---
