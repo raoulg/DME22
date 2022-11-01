@@ -18,7 +18,7 @@ format:
 
 # Notation
 
-## collections
+## collections {.smaller}
 
 - $\mathbb{N}$ is the collection of natural numbers: 1, 2, 3, etc.
 - $\mathbb{R}$ is the collection of real numbers: -2.53, 0.1, 1.3, etc.
@@ -32,7 +32,7 @@ this means:
 
 $X$ is a collection of numbers $x$, and every $x$ is part of the real numbers.
 
-## dimensions
+## dimensions {.smaller}
 
 Observations usually have multiple features. E.g. we observe temperature, humidity, wind velocity.
 
@@ -50,7 +50,7 @@ or more explicit:
 
 $X = \{x_1, \dots, x_m\}$ for $m$ features, where $x_i \in \mathbb{R}^d$
 
-## functions
+## functions {.smaller}
 
 Functions map collections of numbers to other collections.
 
@@ -131,7 +131,7 @@ Only now we try to *separate* values, instead of getting them *on* the line.
 :::
 ::::
 
-## Classification
+## Classification {.smaller}
 
 :::: {.columns}
 
