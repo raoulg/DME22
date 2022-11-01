@@ -1,0 +1,391 @@
+---
+title: "Modelling"
+author: "Raoul Grouls"
+format:
+  revealjs:
+    theme: solarized
+    slide-number: true
+    self-contained: false
+---
+
+# Data science building blocks
+
+![](img/overview_datascience.png)
+	
+# types of machine learning [1]
+
+![](img/ML_types.png)
+
+# Notation
+
+## collections {.smaller}
+
+- $\mathbb{N}$ is the collection of natural numbers: 1, 2, 3, etc.
+- $\mathbb{R}$ is the collection of real numbers: -2.53, 0.1, 1.3, etc.
+- $\in$ means: "is part of". $x \in \mathbb{R}$ means $x$ is part of the collection of real numbers.
+
+when we write: 
+
+$X = \{x | x \in \mathbb{R}\}$ 
+
+this means:
+
+$X$ is a collection of numbers $x$, and every $x$ is part of the real numbers.
+
+## dimensions {.smaller}
+
+Observations usually have multiple features. E.g. we observe temperature, humidity, wind velocity.
+
+These are all real numbers, and we can describe the state of the weather with these three dimensions.
+
+We can write this down as:
+
+$x \in \mathbb{R}^3$.
+
+or more general:
+
+$x \in \mathbb{R}^d$ for $d$ dimensions, 
+
+or more explicit:
+
+$X = \{x_1, \dots, x_m\}$ for $m$ features, where $x_i \in \mathbb{R}^d$
+
+## functions {.smaller}
+
+Functions map collections of numbers to other collections.
+
+For example: 
+
+- we observe 5 features from a patient in a hospital, all real numbers (eg blood pressure), so $X \in \mathbb{R}^5$.
+- we want to predict the amount of days a patient will stay in the hospital, so $y \in \mathbb{R}$.
+
+This means we hope to find a function:
+
+$f \colon \mathbb{R}^5 \to \mathbb{R}$.
+
+for example, a linear model:
+
+$f(X) = w_1 x_1 + w_2 x_2 + w_3 x_3 + w_4 x_4 + w_5 x_5$.
+
+# Linear models
+
+## Linear models - Baselines
+### Even simpler models are called “retarded”
+
+Linear models are one of the simplest models available. Their advantages are:
+
+- The simplicity helps us to avoid overfitting
+- They are fast and we don’t have to worry about getting stuck in a local minimum.
+- They are ideal as a baseline model
+
+## Linear models
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](img/linreg.png)
+:::
+
+::: {.column width="50%"}
+The basic shape of a linear regression is a line (in $\mathbb{R}^2$):
+
+$Y = W X + b$
+
+- $Y = \{y_1, \dots, y_m \}$ are labels
+- every label $y_i$ has a set of features $X=\{x | x \in \mathbb{R}\}$
+- $b$ is a starting value, also called the "bias"
+:::
+::::
+
+## Linear models {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](img/linreg.png)
+:::
+
+::: {.column width="50%"}
+The basic shape of a linear regression is a line:
+
+$Y = W X + b$
+
+- $X = \{x_1, \dots, x_m\}$ where every $x$ is the value of a feature and we have $m$ features.
+- $W$ is a set of weights. Instead of $W X$ we could also write: $w_1 x_1 + w_2 x_2 + \dots + w_m x_m$. 
+- By writing capitals $W$ and $X$ we typically mean that they are collections of numbers, not a single number.
+
+:::
+::::
+
+## Classification
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](img/classification.png)
+:::
+
+::: {.column width="50%"}
+For classification models, we can still use a linear model.
+Only now we try to *separate* values, instead of getting them *on* the line.
+:::
+::::
+
+## Classification {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](img/classification.png)
+:::
+
+::: {.column width="50%"}
+The model is still:
+$Y = W X + b$
+
+- $Y$ is still a label, but typically want to end up with a class like "yes", "no", "heartattack", "buy", etc.
+- so you will need some conversion, like:
+
+$$Y = 
+\begin{cases}
+\text{"buy" if } y \geq 0\\
+\text{"sell" if } y \geq 0\\
+\end{cases}
+$$
+:::
+::::
+
+## Hyperplanes {.smaller}
+### It’s a bird… It’s a plane…
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](img/hyperplane.png)
+:::
+
+::: {.column width="50%"}
+
+- For classification, our outcome are discrete classes (e.g. “yes” or “no”)
+- For regression, our outcome is a real number (e.g. 1.4 or 26.834, denoted as $\mathbb{R}$)
+
+We can use a linear model for both cases. We call these models “hyperplanes”: they have one dimension less than the ambient space.
+
+With classification, we want the data to be separated by the hyperplane. With regression, we want to points to get as close as possible to the hyperplane
+
+:::
+::::
+
+# Support Vector Machines
+
+## Support Vector Machines
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](img/svm.png)
+:::
+
+::: {.column width="50%"}
+
+Which model would you prefer?
+:::
+::::
+
+## Support Vector Machines
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](img/margin.png)
+:::
+
+::: {.column width="50%"}
+
+We would want to have some sort of safety margin, a maximal “dead zone” with a minimal amount of “violations”.
+
+:::
+::::
+
+## Support Vector Machines
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](img/softmargin.png)
+:::
+
+::: {.column width="50%"}
+
+If our labels are $y = \{1, -1\}$ we would want $y (w x_i + b) \geq 1$ to be true.
+
+But let's say $x_1$ is a little bit inside the margin.
+
+And $x_2$ might be completely on the wrong side of the margin. How to account for these "violations" of our "safe border"? 
+:::
+::::
+
+## Support Vector Machines
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](img/softmargin.png)
+:::
+
+::: {.column width="50%"}
+
+We assign a "slack value" $\xi_1$ and $\xi_2$ to these errors.
+These values are what is needed to "correct" the errors.
+
+In the end, we will add $C \Sigma_i \xi_i$ to the loss function.
+$C$ is a value we pick (e.g. 1), and we simply sum up all the "slack" values.
+
+We will then prefer the model with the lowest loss.
+:::
+
+::::
+
+# Kernels
+
+## Non-linear models {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](img/nonlinear.png)
+:::
+
+::: {.column width="50%"}
+A lot of data is non-linear. This means we would need a curved hyperplane.
+
+One trick to do this is the kernel-trick, which is commonly used with Support Vector Machines, which we touched upon in the short history.
+
+Deep learning has found another trick, which will be covered in the deep learning course.
+:::
+::::
+## The Kernel trick
+
+Let's say all you have is a scissor, and you only want to cut once.
+
+Now you have a towel and need to cut off ("classify") the four corners.
+How would you do this?
+
+
+## The Kernel trick
+
+Well, that seems obvious: you bend the towel!
+
+Now, let's transfer this solution to our mathematical problem:
+
+- we want to use a linear model $y = w x + b$
+- we have points in a space, let's say a 2 dimensional space ($X = \{ x | x \in \mathbb{R}^2 \}$)
+- if we are able to somehow "bend" the 2D space into an additional dimension ($\mathbb{R}^3$) we might be able to "separate the points" with just a linear model!
+
+## The Kernel trick
+
+![](img/kernel.png)
+
+## Basis expansion
+
+So how do we "obtain" these extra dimensions?
+Let's start with data that has two features: $X = (x_1, x_2)$
+
+We could transform this into 3 dimensions by adding a square:
+
+
+$\phi_3(X) = (x_1, x_2, x_1 x_2)$
+
+or even five dimensions:
+
+$\phi_5(X) = (x_1, x_2, x_1 x_2, x_1^2, x_2^2)$
+
+## Basis expansion
+
+$\phi_5(X) = (x_1, x_2, x_1 x_2, x_1^2, x_2^2)$
+
+With numbers:
+
+$X = (2, 3)$
+
+$\phi_5(X) = (2, 3, 6, 4, 9)$
+
+## Kernels
+
+A simplified definition of a kernel is:
+
+a symmetric function that 
+- takes two inputs
+- returns a value of zero if the inputs are the same, or positive otherwise
+
+An often used kernel is the Gaussian kernel:
+
+$K(x, x') = exp(-\gamma ||x - x'||^2)$
+
+## Kernels
+
+There are a lot of kernels:
+
+- linear: $K(x, x') = x^T x'$
+- polynomial: $K(x, x') = (\gamma x^T x' + r)^d$
+- gaussian: $K(x, x') = exp(-\gamma ||x-x'||^2)$
+- sigmoid: $K(x, x') = tanh(\gamma x^T x' + r)$
+
+## Kernels
+
+![](img/kernel1.png)
+
+## Kernels
+
+![](img/kernel2.png)
+
+# Challenges
+
+## Too complex models {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+![](img/polynomial.png)
+
+:::
+
+::: {.column width="50%"}
+Using basis expansion might seem a nice trick. But it can be much too powerful...
+
+With too much variables, your model will become too complex very quickly.
+
+The image on the left is a polynomial basis expansion to $x^{100}$. As you can see, the model is way to complex.
+
+:::
+::::
+
+## Hyperparameters {.smaller}
+
+Support Vector Machines will often protect you against overfitting, because of their preference for models with a large "safety border"
+
+However, with a SVM we will need to pick optimal hyperparameters for the model:
+
+- there is a parameter $C$ that regulates the penalty for the "slack" variables: $C \Sigma_{i=1} \xi_i$
+- using a kernel, you need to find an optimal value for the $\gamma$ value.
+
+This means we will need to do some hyperparameter tuning.
+
+## Overfitting {.smaller}
+
+While picking the right model with the right hyperparameters can protect you against overfitting, an important measure against overfitting is a train-test split.
+If the model only "remembers" the trainset, it will fail at the test and validation sets.
+
+Typically, we use three sets:
+
+- train set: this should be the biggest chunk of data. This is used to train your model.
+- test set: this is a smaller chunk, and used to finetune your hyperparameters.
+- validation set: this set is also small, and you use it to test performance after you are done hypertuning.
+
+A general ratio would be 80-10-10 for train-test-valdation.
+
+
+# citations {.appendix}
+
+[1] Peng, Junjie & Jury, Elizabeth & Dönnes, Pierre & Ciurtin, Coziana. (2021). Machine Learning Techniques for Personalised Medicine Approaches in Immune-Mediated Chronic Inflammatory Diseases: Applications and Challenges. Frontiers in Pharmacology. 12. 10.3389/fphar.2021.720694.
