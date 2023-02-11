@@ -50,6 +50,9 @@ d = Coordinates(10, 6)
 f = c + d       # c.__add__(d)
 g = c - d
 
+print(c)
+c.mirror_in_x()
+print(c)
 pass
 
 print(str(c))          # c.__str__()
