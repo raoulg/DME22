@@ -1,3 +1,6 @@
 # DME22
 
-Lesmateriaal voor de cursus Data Mining en Exploration van de Hogeschool Utrecht
+Deze cursus wordt gegeven op de Hogeschool Utrecht, en is onderdeel van een reeks modules.
+Dit materiaal heeft de focus op Data mining en Exploration, en bereidt studenten voor op de Deep Learning course.
+
+
