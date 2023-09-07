@@ -1,0 +1,67 @@
+pre-commit:
+  commands:
+    pdm-lock:
+      run: pdm lock --check
+    black:
+      files: git ls-files
+      glob: '*.{py, ipynb}'
+      run: black {staged_files}
+      stage_fixed: true
+    isort:
+      files: git ls-files
+      glob: '*.py'
+      run: isort {staged_files}
+      stage_fixed: true
+    clean-jupyter:
+      files: git ls-files
+      glob: '*.ipynb'
+      run: pdm run jupyter nbconvert --clear-output --inplace {staged_files}
+      stage_fixed: true
+    toml-sort:
+      glob: '*.toml'
+      run: pdm run toml-sort {staged_files}
+      stage_fixed: true
+    mdformat:
+      glob: '*.md'
+      run: pdm run mdformat {staged_files}
+      stage_fixed: true
+    ruff:
+      files: git ls-files
+      glob: '*.py'
+      run: pdm run ruff {staged_files}
+    mypy:
+      glob: '*.py'
+      run: pdm run mypy --pretty {staged_files}
+    lychee:
+      run: lychee . --suggest --max-concurrency 32 --cache --format detailed --header "accept=*/*"
+
+pre-merge:
+  commands:
+    black:
+      glob: '*.{py, ipynb}'
+      run: black {all_files}
+      stage_fixed: true
+    isort:
+      glob: '*.py'
+      run: isort {all_files}
+      stage_fixed: true
+    clean-jupyter:
+      glob: '*.ipynb'
+      run: pdm run jupyter nbconvert --clear-output --inplace {all_files}
+      stage_fixed: true
+    toml-sort:
+      glob: '*.toml'
+      run: pdm run toml-sort {all_files}
+      stage_fixed: true
+    mdformat:
+      files: git ls-files
+      glob: '*.md'
+      run: pdm run mdformat {files}
+      stage_fixed: true
+    ruff:
+      glob: '*.py'
+      run: pdm run ruff {all_files} --fix
+    lychee:
+      run: lychee . --suggest --max-concurrency 32 --cache --format detailed --header "accept=*/*"
+    pdm-lock:
+      run: pdm lock
