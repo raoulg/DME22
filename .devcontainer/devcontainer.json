@@ -1,0 +1,19 @@
+{
+    "image": "raoulgrouls/devcontainer:latest",
+    "postStartCommand": "zsh",
+    "customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.python",
+				"ms-toolsai.jupyter",
+				"mhutchie.git-graph",
+				"charliermarsh.ruff",
+				"ms-python.black-formatter",
+				"Gruntfuggly.todo-tree",
+			],
+			"settings": {
+				"editor.rulers" : [88, 100],
+			}
+		}
+	}
+}
