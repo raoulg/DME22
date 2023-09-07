@@ -31,7 +31,7 @@ pre-commit:
       run: pdm run ruff {staged_files}
     mypy:
       glob: '*.py'
-      run: pdm run mypy --pretty {staged_files}
+      run: pdm run mypy --pretty {staged_files} --ignore-missing-imports
     lychee:
       run: lychee . --suggest --max-concurrency 32 --cache --format detailed --header "accept=*/*"
 
