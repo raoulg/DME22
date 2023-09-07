@@ -17,7 +17,7 @@ def savefig(prefix, imagedir):
     logger.info(f"Saved file to {filename}")
 
 
-def scatter(df, presets, save:bool, ax=None):
+def scatter(df, presets, save: bool, ax=None):
     args = presets.scatter
     sns.scatterplot(
         data=df,
@@ -27,7 +27,7 @@ def scatter(df, presets, save:bool, ax=None):
         hue_order=presets.speciesorder,
         palette=presets.palette,
         alpha=presets.alpha,
-        ax=ax
+        ax=ax,
     )
     plt.title(presets.title)
     savefig("scatter_", presets.imagedir)
@@ -35,7 +35,14 @@ def scatter(df, presets, save:bool, ax=None):
 
 def boxplots(df, presets, save: bool, ax=None):
     p = df.melt(id_vars=presets.target)
-    sns.boxplot(data=p, x="variable", y="value", hue=presets.target, palette=presets.palette, ax=ax)
+    sns.boxplot(
+        data=p,
+        x="variable",
+        y="value",
+        hue=presets.target,
+        palette=presets.palette,
+        ax=ax,
+    )
     if save:
         plt.title(presets.title)
         savefig("boxplot_", presets.imagedir)
@@ -43,21 +50,33 @@ def boxplots(df, presets, save: bool, ax=None):
 
 def linearmodel(df, presets, save: bool):
     args = presets.scatter
-    sns.lmplot(data=df, x = args["x"], y = args["y"], hue=presets.target,
-    lowess=False, ci=98, scatter_kws={'facecolors':'none', 'alpha':0.3}, palette=presets.palette)
+    sns.lmplot(
+        data=df,
+        x=args["x"],
+        y=args["y"],
+        hue=presets.target,
+        lowess=False,
+        ci=98,
+        scatter_kws={"facecolors": "none", "alpha": 0.3},
+        palette=presets.palette,
+    )
     if save:
         plt.title(presets.title)
         savefig("linearmodel_", presets.imagedir)
 
+
 def growth(df, presets, save: bool, ax=None):
     args = presets.scatter
-    df['sepal_frac'] = df.apply(lambda row: row[args["y"]] / row[args["x"]], axis=1)
-    sns.histplot(data=df, x='sepal_frac', hue=presets.target, palette=presets.palette, ax=ax)
+    df["sepal_frac"] = df.apply(lambda row: row[args["y"]] / row[args["x"]], axis=1)
+    sns.histplot(
+        data=df, x="sepal_frac", hue=presets.target, palette=presets.palette, ax=ax
+    )
     if save:
         args = presets.growth
         plt.title(args["title"])
         plt.xlabel(args["xlab"])
         savefig("growth_", presets.imagedir)
+
 
 def plot_all(df, presets):
     fig, axs = plt.subplots(1, 3, figsize=presets.figsize)
@@ -70,5 +89,3 @@ def plot_all(df, presets):
     axs[2].set_xlabel(args["xlab"])
     fig.suptitle(presets.title)
     savefig("all_", presets.imagedir)
-
-

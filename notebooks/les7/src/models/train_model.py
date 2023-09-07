@@ -1,7 +1,7 @@
-from sklearn.model_selection import GridSearchCV
-from sklearn.base import BaseEstimator
-from typing import Dict, List, Callable, Optional, Tuple
+from typing import Dict, List, Optional, Tuple
+
 import numpy as np
+from sklearn.model_selection import GridSearchCV
 from src.visualization import visualize
 
 

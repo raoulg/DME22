@@ -1,10 +1,9 @@
-import polars as pl
 from typing import List
-from pathlib import Path
+
+import polars as pl
 
 
 def prepare_floats(df, target) -> pl.DataFrame:
-
     p = (
         df.select(
             [
@@ -33,6 +32,7 @@ def prepare_floats(df, target) -> pl.DataFrame:
     )  # to normalize the data
 
     return p
+
 
 def get_utf_columns(df, maxvalue) -> List[str]:
     df_utf = df.select(pl.col(pl.Utf8))

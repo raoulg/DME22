@@ -1,8 +1,9 @@
+from typing import Dict, List, Optional, Tuple
+
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
-from typing import List, Tuple, Dict, Optional
-import matplotlib.pyplot as plt
 from sklearn.model_selection import GridSearchCV
 
 
@@ -34,8 +35,10 @@ def gridsearch_heatmap(
     Args:
         gridresults (GridSearchCV)
         param_grid (Dict): A named dict used for tuning
-        vmin (Optional[float], optional): Minimum threshold for colors. Defaults to None.
-        vmax (Optional[float], optional): Maximum threshold for colers. Defaults to None.
+        vmin (Optional[float], optional): Minimum threshold for colors.
+            Defaults to None.
+        vmax (Optional[float], optional): Maximum threshold for colers.
+            Defaults to None.
         figsize (Tuple[int, int], optional): Changes size of plot. Defaults to (10, 10).
     """
     params = list(param_grid.keys())[:2]

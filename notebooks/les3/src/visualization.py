@@ -11,7 +11,7 @@ def custom_summary(f: Fitter, ax, nbest: int = 5):
 
     # construct a title with the parameters
     title = f"{best} | "
-    for (k, v) in f.get_best()[best].items():
+    for k, v in f.get_best()[best].items():
         # .items() returen (key, value) pairs
         # key is the name of the parameter
         # value is a floating point.

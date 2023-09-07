@@ -25,7 +25,6 @@ def make_sine_wave(
 def make_linear(
     filename: Path, size: int = 100, a: float = 2, b: float = 4, s: float = 0.5
 ):
-
     if filename.exists():
         logger.info(f"Data already generated in {filename}")
     else:

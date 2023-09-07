@@ -1,7 +1,6 @@
 import click
-from loguru import logger
-
 import visualize
+from loguru import logger
 from settings import Settings
 
 logger.add("logging.log")
@@ -24,9 +23,10 @@ def main(task: str) -> None:
 
     if task == "growth":
         visualize.growth(df, presets, save=True)
-    
+
     if task == "all":
         visualize.plot_all(df, presets)
+
 
 if __name__ == "__main__":
     main()

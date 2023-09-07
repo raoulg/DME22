@@ -5,7 +5,6 @@ from typing import List
 
 import pandas as pd
 from loguru import logger
-
 from settings import Settings
 
 # precompiling the regex is good practice
@@ -26,7 +25,7 @@ def clean_file(filename: Path, presets: Settings) -> None:
     logger.info(f"Cleaning {namecol}")
     df[namecol] = df[namecol].apply(clean_name)
 
-    logger.info(f"Dropping nas")
+    logger.info("Dropping nas")
     select: List[bool] = list(df.isna().sum() > 0)
     before: int = len(df)
     df = df.dropna(subset=df.columns[select], axis="rows")

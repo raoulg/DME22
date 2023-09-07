@@ -1,7 +1,6 @@
 import click
-from loguru import logger
-
 import stats
+from loguru import logger
 from settings import Settings
 
 logger.add("logging.log")

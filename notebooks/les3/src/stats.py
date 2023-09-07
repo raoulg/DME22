@@ -30,7 +30,7 @@ def central_limit(presets, n: int):
     draw = np.array(data.sample(n=100).value)
     # and plot
     sns.kdeplot(x=draw, ax=axs[0])
-    axs[0].set_title(f"sample #0")
+    axs[0].set_title("sample #0")
 
     for i in range(1, n):
         # keep sampling and add the sample to the previous one
@@ -59,9 +59,9 @@ def simulate_simpson(presets):
     # for every group
     for i in range(groups):
         # draw some random numbers, scaled by var
-        x = rng.random(n) * var
+        x = rng.random(42) * var
         # and make a linear relation
-        y = slope * x + rng.random(n)
+        y = slope * x + rng.random(42)
         # and move the group a difference amount
         data.append([x + difference * i, y + difference * (i * -np.sign(slope))])
 
@@ -94,7 +94,6 @@ def simulate_simpson(presets):
 
 
 def beta_examples(presets):
-
     fix, axs = plt.subplots(presets.subs[0], presets.subs[1], figsize=presets.figsize)
     axs = axs.ravel()
 

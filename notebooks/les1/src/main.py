@@ -1,5 +1,4 @@
 import click
-
 # this imports the complete preprocess.py file namespace
 import preprocess
 # this imports from the settings.py file
