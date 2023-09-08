@@ -1,8 +1,11 @@
 # Setting up your development environment
 
-## WSL2
+## windows: WSL2 or docker
 
-Windows users will need WSL2. See [this](wsl2/wsl2.md) for instructions.
+Windows users will need WSL2 or the devcontainer.
+
+- See [this](wsl2/wsl2.md) for wsl2 instructions.
+- see [this](vscode/devcontainer.md) for the devcontainer instructions.
 
 ## Create an ssh-key
 
@@ -37,9 +40,13 @@ on mac.
 
 ## Clone with git
 
-Now, navigate to your `code` folder (or the equivalent location) and do `git clone git@gitlab.com:han-aim/mads/course-materials-uos1.git`
+Now, navigate to your `code` folder (or the equivalent location) and do `git clone git/url/here` where you copy the ssh or https url from git.
 
-Because you have set up your ssh-key inside the `~/.ssh` folder, git will find it and authenticate with that.
+## SSH / PAT
+
+We dont need ssh for this project, so you can skip this.
+
+If you have set up your ssh-key inside the `~/.ssh` folder, git will find it and authenticate with that.
 
 Alternatively, you can create a [PAT token on gitlab](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html), and use that to clone with https. In that case, you do `git clone https://gitlab.com/han-aim/mads/course-materials-uos1.git` and you have to authenticate with your gitlab username and PAT token.
 
