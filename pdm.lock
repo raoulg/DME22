@@ -6,7 +6,7 @@ groups = ["default"]
 cross_platform = true
 static_urls = false
 lock_version = "4.3"
-content_hash = "sha256:ec624ff4b0ad831d89fc6d2ce6e2406de32cd4ca6f37ba52804e9d33c901f34b"
+content_hash = "sha256:22943065b49635b70a3e5d9f2c1dca3ce7ef7f1c30a704bca3e78fbed5a6b6f9"
 
 [[package]]
 name = "altair"
@@ -340,6 +340,18 @@ files = [
 ]
 
 [[package]]
+name = "cons"
+version = "0.4.6"
+requires_python = ">=3.6"
+summary = "An implementation of Lisp/Scheme-like cons in Python."
+dependencies = [
+    "logical-unification>=0.4.0",
+]
+files = [
+    {file = "cons-0.4.6.tar.gz", hash = "sha256:669fe9d5ee916d5e42b9cac6acc911df803d04f2e945c1604982a04d27a29b47"},
+]
+
+[[package]]
 name = "contourpy"
 version = "1.1.0"
 requires_python = ">=3.8"
@@ -406,6 +418,19 @@ files = [
 ]
 
 [[package]]
+name = "etuples"
+version = "0.3.9"
+requires_python = ">=3.8"
+summary = "Python S-expression emulation using tuple-like objects."
+dependencies = [
+    "cons",
+    "multipledispatch",
+]
+files = [
+    {file = "etuples-0.3.9.tar.gz", hash = "sha256:a474e586683d8ba8d842ba29305005ceed1c08371a4b4b0e0e232527137e5ea3"},
+]
+
+[[package]]
 name = "executing"
 version = "1.2.0"
 summary = "Get the currently executing AST node of a frame, and other information"
@@ -431,6 +456,34 @@ summary = "A nested progress with plotting options for fastai"
 files = [
     {file = "fastprogress-1.0.3-py3-none-any.whl", hash = "sha256:6dfea88f7a4717b0a8d6ee2048beae5dbed369f932a368c5dd9caff34796f7c5"},
     {file = "fastprogress-1.0.3.tar.gz", hash = "sha256:7a17d2b438890f838c048eefce32c4ded47197ecc8ea042cecc33d3deb8022f5"},
+]
+
+[[package]]
+name = "filelock"
+version = "3.12.3"
+requires_python = ">=3.8"
+summary = "A platform independent file lock."
+files = [
+    {file = "filelock-3.12.3-py3-none-any.whl", hash = "sha256:f067e40ccc40f2b48395a80fcbd4728262fab54e232e090a4063ab804179efeb"},
+    {file = "filelock-3.12.3.tar.gz", hash = "sha256:0ecc1dd2ec4672a10c8550a8182f1bd0c0a5088470ecd5a125e45f49472fac3d"},
+]
+
+[[package]]
+name = "fitter"
+version = "1.6.0"
+requires_python = ">=3.8,<4.0"
+summary = "A tool to fit data to many distributions and get the best one(s)"
+dependencies = [
+    "click<9.0.0,>=8.1.6",
+    "joblib<2.0.0,>=1.3.1",
+    "matplotlib>=3.7.2",
+    "numpy>=1.20",
+    "pandas<3.0.0,>=2.0.3",
+    "scipy>=0.18",
+    "tqdm<5.0.0,>=4.65.1",
+]
+files = [
+    {file = "fitter-1.6.0.tar.gz", hash = "sha256:908223d75b35d3846984bfb2fed1d2a926da5a30b95b704aa95b2a894227c0af"},
 ]
 
 [[package]]
@@ -1022,6 +1075,19 @@ files = [
 ]
 
 [[package]]
+name = "logical-unification"
+version = "0.4.6"
+requires_python = ">=3.6"
+summary = "Logical unification in Python"
+dependencies = [
+    "multipledispatch",
+    "toolz",
+]
+files = [
+    {file = "logical-unification-0.4.6.tar.gz", hash = "sha256:908435123f8a106fa4dcf9bf1b75c7beb309fa2bbecf277868af8f1c212650a0"},
+]
+
+[[package]]
 name = "loguru"
 version = "0.7.1"
 requires_python = ">=3.5"
@@ -1127,6 +1193,22 @@ files = [
 ]
 
 [[package]]
+name = "minikanren"
+version = "1.0.3"
+requires_python = ">=3.6"
+summary = "Relational programming in Python"
+dependencies = [
+    "cons>=0.4.0",
+    "etuples>=0.3.1",
+    "logical-unification>=0.4.1",
+    "multipledispatch",
+    "toolz",
+]
+files = [
+    {file = "miniKanren-1.0.3.tar.gz", hash = "sha256:1ec8bdb01144ad5e8752c7c297fb8a122db920f859276d25a72d164e998d7f6e"},
+]
+
+[[package]]
 name = "mistune"
 version = "3.0.1"
 requires_python = ">=3.7"
@@ -1134,6 +1216,15 @@ summary = "A sane and fast Markdown parser with useful plugins and renderers"
 files = [
     {file = "mistune-3.0.1-py3-none-any.whl", hash = "sha256:b9b3e438efbb57c62b5beb5e134dab664800bdf1284a7ee09e8b12b13eb1aac6"},
     {file = "mistune-3.0.1.tar.gz", hash = "sha256:e912116c13aa0944f9dc530db38eb88f6a77087ab128f49f84a48f4c05ea163c"},
+]
+
+[[package]]
+name = "multipledispatch"
+version = "1.0.0"
+summary = "Multiple dispatch"
+files = [
+    {file = "multipledispatch-1.0.0-py3-none-any.whl", hash = "sha256:0c53cd8b077546da4e48869f49b13164bebafd0c2a5afceb6bb6a316e7fb46e4"},
+    {file = "multipledispatch-1.0.0.tar.gz", hash = "sha256:5c839915465c68206c3e9c473357908216c28383b425361e5d144594bf85a7e0"},
 ]
 
 [[package]]
@@ -1647,7 +1738,7 @@ files = [
 
 [[package]]
 name = "pymc"
-version = "5.8.0"
+version = "5.7.2"
 requires_python = ">=3.9"
 summary = "Probabilistic Programming in Python: Bayesian Modeling and Probabilistic Machine Learning with PyTensor"
 dependencies = [
@@ -1657,13 +1748,13 @@ dependencies = [
     "fastprogress>=0.2.0",
     "numpy>=1.15.0",
     "pandas>=0.24.0",
-    "pytensor<2.16,>=2.15.0",
+    "pytensor<2.15,>=2.14.1",
     "scipy>=1.4.1",
     "typing-extensions>=3.7.4",
 ]
 files = [
-    {file = "pymc-5.8.0-py3-none-any.whl", hash = "sha256:8cc506ea9e156e5ea05c1f7edb3155ac65e67ee546b111414e060f486f25aac3"},
-    {file = "pymc-5.8.0.tar.gz", hash = "sha256:2d6327b9ce0a9f7553abdcee90c5d4b42ccf6e3fc09461aefa400e84c3592e32"},
+    {file = "pymc-5.7.2-py3-none-any.whl", hash = "sha256:6e0abb0231fdecb7904968c81b7a66b06a4e399ffa68dcdb6f758786a782eae6"},
+    {file = "pymc-5.7.2.tar.gz", hash = "sha256:d0fdb19226b945d5d2b6941875d4ab88b6f0a1dc5eeaf80989e16694235c74f9"},
 ]
 
 [[package]]
@@ -1688,17 +1779,27 @@ files = [
 
 [[package]]
 name = "pytensor"
-version = "2.15.0"
+version = "2.14.2"
 requires_python = ">=3.9"
-summary = "UNKNOWN"
+summary = "Optimizing compiler for evaluating mathematical expressions on CPUs and GPUs."
+dependencies = [
+    "cons",
+    "etuples",
+    "filelock",
+    "logical-unification",
+    "miniKanren",
+    "numpy>=1.17.0",
+    "scipy>=0.14",
+    "setuptools>=48.0.0",
+    "typing-extensions",
+]
 files = [
-    {file = "pytensor-2.15.0-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:aac152ef42f461f1d72d5c3e1ba43e973e5e517ee21b5a27d179d2bcbc825253"},
-    {file = "pytensor-2.15.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:e412fe082e4ccfdc58336a07d0f7f1fae5c98dc16dc82271d871e78615883915"},
-    {file = "pytensor-2.15.0-cp311-cp311-musllinux_1_1_i686.whl", hash = "sha256:2062046dc562863415cd381538e3d23416d9766fedd08f8f32236215e03089f6"},
-    {file = "pytensor-2.15.0-cp311-cp311-musllinux_1_1_x86_64.whl", hash = "sha256:1447a72a316689f7eb79356e640bae1fd2cf91d8a7e0eda835d9bdfce00872c1"},
-    {file = "pytensor-2.15.0-cp311-cp311-win_amd64.whl", hash = "sha256:ea0a6e8513159ffec1473c8f8119a47fcdfb503f2ea89f03be3c01d2190d30be"},
-    {file = "pytensor-2.15.0-py2.py3-none-any.whl", hash = "sha256:e8302904b302b400df213fd7fb7c8455f4801e43f26936d7e7c5b8f68ac538b7"},
-    {file = "pytensor-2.15.0.tar.gz", hash = "sha256:80ad1686407eb8c29bad4913aa15504edebc30be9d7e0a24b453a13c457146c6"},
+    {file = "pytensor-2.14.2-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:c1bfdc8f68c18b54fab29361f0b414f7f8625d18ce45e429eac01b08a0a0efce"},
+    {file = "pytensor-2.14.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:77dc11df11d063ca8f49267e29064ab4e24b51336635c732b46065d1f77b6876"},
+    {file = "pytensor-2.14.2-cp311-cp311-musllinux_1_1_i686.whl", hash = "sha256:8047dc6a9f356f8c6e5256a517879655e04c962554d555204a224fe5d4a283dc"},
+    {file = "pytensor-2.14.2-cp311-cp311-musllinux_1_1_x86_64.whl", hash = "sha256:162a69c279169ba6f4a8b8d1762a2c76da8ca0237cdc627a02a587752b24381f"},
+    {file = "pytensor-2.14.2-cp311-cp311-win_amd64.whl", hash = "sha256:3298343190805fb8f17d8be9366f0a47ce94a6b647980afab8f7fac144b7c701"},
+    {file = "pytensor-2.14.2.tar.gz", hash = "sha256:dbafae9ce4264e0e5d1e02b2214da3187ca51e99f43a1a2245e5c0d839cf3dfa"},
 ]
 
 [[package]]
@@ -2300,6 +2401,19 @@ files = [
     {file = "tornado-6.3.3-cp38-abi3-win32.whl", hash = "sha256:65ceca9500383fbdf33a98c0087cb975b2ef3bfb874cb35b8de8740cf7f41bd3"},
     {file = "tornado-6.3.3-cp38-abi3-win_amd64.whl", hash = "sha256:22d3c2fa10b5793da13c807e6fc38ff49a4f6e1e3868b0a6f4164768bb8e20f5"},
     {file = "tornado-6.3.3.tar.gz", hash = "sha256:e7d8db41c0181c80d76c982aacc442c0783a2c54d6400fe028954201a2e032fe"},
+]
+
+[[package]]
+name = "tqdm"
+version = "4.66.1"
+requires_python = ">=3.7"
+summary = "Fast, Extensible Progress Meter"
+dependencies = [
+    "colorama; platform_system == \"Windows\"",
+]
+files = [
+    {file = "tqdm-4.66.1-py3-none-any.whl", hash = "sha256:d302b3c5b53d47bce91fea46679d9c3c6508cf6332229aa1e7d8653723793386"},
+    {file = "tqdm-4.66.1.tar.gz", hash = "sha256:d88e651f9db8d8551a62556d3cff9e3034274ca5d66e93197cf2490e2dcb69c7"},
 ]
 
 [[package]]
