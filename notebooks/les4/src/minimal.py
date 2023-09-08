@@ -2,7 +2,7 @@ import polars as pl
 import preprocess
 import streamlit as st
 import visualization
-from settings import modelsettings
+from settings import settings as modelsettings
 
 
 def main():

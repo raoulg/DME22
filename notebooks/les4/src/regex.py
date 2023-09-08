@@ -2,7 +2,10 @@ import re
 
 from settings import settings
 
-source_file = settings.raw_data_dir / settings.regex_practice_file
+source_file = (
+    settings.raw_data_dir
+    / "BWBR0047176-geldend_van_24-09-2022_tm_heden_zichtdatum_03-10-2022.txt"
+)
 txt = source_file.read_text(encoding="utf8")
 lines = txt.splitlines()
 
