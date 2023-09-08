@@ -26,15 +26,10 @@ The setup of this lesson is like this
 The demo shows you how to explore the iris dataset. It just showcases different tips&tricks
 with seaborn / matplotlib.
 
-You will NOT send a jupyter notebook to your client!
 As we have said before: notebooks are just for testing / prototyping.
 To make reproducable code, we use the main.py file.
 
-To generate the individual plots, you first need to spwan the shell with the python environment:
-
-$ poetry shell
-
-After that, you can run the different tasks:
+You can reproduce the tasks like this:
 
 $python src/main.py --task=scatter
 $python src/main.py --task=boxplot
