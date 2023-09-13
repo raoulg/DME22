@@ -1,5 +1,8 @@
 {
-    "image": "raoulgrouls/devcontainer:latest",
+    "image": "raoulgrouls/devcontainer-slim:latest",
+	"onCreateCommand": "mkdir /home/devuser/code",
+	"workspaceMount": "source=${localWorkspaceFolder},target=/home/devuser/code/${localWorkspaceFolderBasename},type=bind,consistency=cached",
+	"workspaceFolder": "/home/devuser/code/${localWorkspaceFolderBasename}",
     "postStartCommand": "zsh",
     "customizations": {
 		"vscode": {
