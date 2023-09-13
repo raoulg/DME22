@@ -4,6 +4,7 @@ __pychache__/
 *.ipynb_checkpoints
 *.DS_Store
 *.vscode
+*.vscode-server
 */**/libs/
 .pdm-python
 .lycheecache
