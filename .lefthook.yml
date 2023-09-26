@@ -7,11 +7,6 @@ pre-commit:
       glob: '*.{py, ipynb}'
       run: black {staged_files}
       stage_fixed: true
-    isort:
-      files: git ls-files
-      glob: '*.py'
-      run: isort {staged_files}
-      stage_fixed: true
     clean-jupyter:
       files: git ls-files
       glob: '*.ipynb'
@@ -28,7 +23,7 @@ pre-commit:
     ruff:
       files: git ls-files
       glob: '*.py'
-      run: pdm run ruff {staged_files}
+      run: pdm run ruff {staged_files} --fix
     mypy:
       glob: '*.py'
       run: pdm run mypy --pretty {staged_files} --ignore-missing-imports
@@ -40,10 +35,6 @@ pre-merge:
     black:
       glob: '*.{py, ipynb}'
       run: black {all_files}
-      stage_fixed: true
-    isort:
-      glob: '*.py'
-      run: isort {all_files}
       stage_fixed: true
     clean-jupyter:
       glob: '*.ipynb'
