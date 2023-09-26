@@ -29,7 +29,6 @@ dependencies = [
     "streamlit>=1.26.0",
     "watchdog>=3.0.0",
     "pydeck>=0.8.0",
-    "geopy>=2.4.0",
     "jupyter>=1.0.0",
     "fitter>=1.6.0",
     "mads-datasets>=0.3.4",
