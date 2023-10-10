@@ -11,7 +11,7 @@ format:
 # Data science building blocks
 
 ![](img/overview_datascience.png)
-	
+
 # types of machine learning [1]
 
 ![](img/ML_types.png)
@@ -24,9 +24,9 @@ format:
 - $\mathbb{R}$ is the collection of real numbers: -2.53, 0.1, 1.3, etc.
 - $\in$ means: "is part of". $x \in \mathbb{R}$ means $x$ is part of the collection of real numbers.
 
-when we write: 
+when we write:
 
-$X = \{x | x \in \mathbb{R}\}$ 
+$X = \{x | x \in \mathbb{R}\}$
 
 this means:
 
@@ -44,7 +44,7 @@ $x \in \mathbb{R}^3$.
 
 or more general:
 
-$x \in \mathbb{R}^d$ for $d$ dimensions, 
+$x \in \mathbb{R}^d$ for $d$ dimensions,
 
 or more explicit:
 
@@ -54,7 +54,7 @@ $X = \{x_1, \dots, x_m\}$ for $m$ features, where $x_i \in \mathbb{R}^d$
 
 Functions map collections of numbers to other collections.
 
-For example: 
+For example:
 
 - we observe 5 features from a patient in a hospital, all real numbers (eg blood pressure), so $X \in \mathbb{R}^5$.
 - we want to predict the amount of days a patient will stay in the hospital, so $y \in \mathbb{R}$.
@@ -111,7 +111,7 @@ The basic shape of a linear regression is a line:
 $Y = W X + b$
 
 - $X = \{x_1, \dots, x_m\}$ where every $x$ is the value of a feature and we have $m$ features.
-- $W$ is a set of weights. Instead of $W X$ we could also write: $w_1 x_1 + w_2 x_2 + \dots + w_m x_m$. 
+- $W$ is a set of weights. Instead of $W X$ we could also write: $w_1 x_1 + w_2 x_2 + \dots + w_m x_m$.
 - By writing capitals $W$ and $X$ we typically mean that they are collections of numbers, not a single number.
 
 :::
@@ -146,12 +146,75 @@ $Y = W X + b$
 - $Y$ is still a label, but typically want to end up with a class like "yes", "no", "heartattack", "buy", etc.
 - so you will need some conversion, like:
 
-$$Y = 
+$$Y =
 \begin{cases}
 \text{"buy" if } y \geq 0\\
 \text{"sell" if } y \geq 0\\
 \end{cases}
 $$
+:::
+::::
+
+## Scikit Learn
+
+```python
+from sklearn.svm import SVC
+from sklearn.model_selection import train_test_split
+
+data = sns.load_dataset("penguins")
+data = data.drop(["island", "sex"], axis=1).dropna()
+
+y = data["species"]
+X = data.drop("species", axis=1)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+model = SVC()
+model.fit(X_train, y_train)
+
+yhat = model.predict(X_test)
+(yhat == y_valid).mean()
+```
+
+## Changing the model
+
+```python
+from sklearn.ensemble import RandomForestClassifier
+model = RandomForestClassifier()
+model.fit(X_train, y_train)
+yhat = model.predict(X_valid)
+(yhat == y_valid).mean()
+```
+
+## Multiple models {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](img/models.png)
+:::
+
+::: {.column width="50%"}
+```python
+classifiers = [
+    ('linear', SVC(kernel='linear')),
+    ('kernel', SVC(C=1.0)),
+    ('rf', RandomForestClassifier(n_estimators=100)),
+    ('bayes', GaussianNB()),
+    ('gauss', GaussianProcessClassifier()),
+    ('kNN', KNeighborsClassifier(n_neighbors=5)),
+    ('tree', DecisionTreeClassifier(criterion='gini'))
+]
+
+for i, (name, clf) in enumerate(classifiers):
+    clf.fit(X_train, y_train)
+    result = cross_val_score(clf, X_test, y_test, cv = 5)
+
+    mu = np.mean(result)
+    stderr = np.std(result)/np.sqrt(cv)
+
+    plt.scatter(i, mu, label=name)
+    plt.errorbar(i, mu, yerr=stderr)
+```
 :::
 ::::
 
@@ -221,7 +284,7 @@ If our labels are $y = \{1, -1\}$ we would want $y (w x_i + b) \geq 1$ to be tru
 
 But let's say $x_1$ is a little bit inside the margin.
 
-And $x_2$ might be completely on the wrong side of the margin. How to account for these "violations" of our "safe border"? 
+And $x_2$ might be completely on the wrong side of the margin. How to account for these "violations" of our "safe border"?
 :::
 ::::
 
@@ -314,7 +377,7 @@ $\phi_5(X) = (2, 3, 6, 4, 9)$
 
 A simplified definition of a kernel is:
 
-a symmetric function that 
+a symmetric function that
 - takes two inputs
 - returns a value of zero if the inputs are the same, or positive otherwise
 
@@ -371,6 +434,10 @@ However, with a SVM we will need to pick optimal hyperparameters for the model:
 - using a kernel, you need to find an optimal value for the $\gamma$ value.
 
 This means we will need to do some hyperparameter tuning.
+
+## Hyperparameters {.smaller}
+
+![](img/hypertune.png)
 
 ## Overfitting {.smaller}
 
