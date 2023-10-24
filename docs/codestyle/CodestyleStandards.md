@@ -87,7 +87,7 @@ The topics cover different subjects; some are more a preference for one library 
 | [pyproject.toml for dependencies](../dependencies/03_dependencies_management.md) | 💡                 | 🏅                | 🏅       | 🏅          |
 | [Use cookiecutters](cookiecutter.md)                                             | 💡                 | 🏅                | 🏅       | 🏅          |
 | [Git](../git/01_git_basics.md)                                                   | 💡                 | 🏅                | 🏅       | 🏅          |
-| [Use formatters and linting](linting.md)                                         | 🐌                 | 💡                | 🏅       | 🏅          |
+| [Use formatters and linting](linting.md)                                         | 🐌                 | 🏅                | 🏅       | 🏅          |
 | [Use typehinting](typehinting.md)                                                | 🐌                 | 💡                | 🏅       | 🏅          |
 | [Makefiles](../makefiles/intro_makefiles.md)                                     | 🐌                 | 💡                | 🏅       | 🏅          |
 | Encapsulation                                                                    | 🐌                 | 💡                | 🏅       | 🏅          |
