@@ -10,9 +10,38 @@ If you would install both versions of `Numpy` on your computer, there is a good 
 
 ## Dependency management with PDM
 
-These version requirements of packages in a project, is called dependency management. Python is known for its horrific dependency management. Of the many tools that try to solve this problem, none of them are perfect. The most (in)famous and widely used tool is [`Anaconda`](https://www.anaconda.com/). However, we believe that it is somewhat outdated and doesn't implement modern coding and package management standards.
+These version requirements of packages in a project, is called dependency management. Python is known for its horrific dependency management. Of the many tools that try to solve this problem, none of them are perfect. The most (in)famous and widely used tool is [`Anaconda`](https://www.anaconda.com/). However, Anaconda is bulky (it adds over 5GB of dependencies to your environment), doesnt follow [PEP standards like the `pyproject.toml` file](https://peps.python.org/pep-0621/) and if you make a venv and export the dependencies, the export is OS specific and wont be reproducable for other OS-es (eg between Linux and Windows) unless you use a workaround to strip the OS-specific parts.
 
 Therefore, we have chosen to use `PDM` as our dependency manager. It is not perfect either, but implements some of the best practices available and helps avoid a lot of problems. There are some key reasons why we chose PDM as our recommendation for dependency management for Python, which we explain below. Use [this link](https://pdm.fming.dev/) to install PDM, if you did not already.
+
+#### 0. Python native venvs
+With python, you can create virtual environments that isolate your dependencies. It works like this:
+To create a virtual environment, open your command prompt or terminal and navigate to the directory where you want to create the virtual environment.
+```bash
+python -m venv .venv
+```
+This command will create a new virtual environment in a directory named .venv in your current working directory.
+
+You need to activate the virtual environment to work within it.
+
+```bash
+source .venv/bin/activate
+```
+Once activated, you'll see the virtual environment's name in your command prompt, indicating that you are now working within the virtual environment.
+With the virtual environment activated, you can use pythons native `pip` to install packages and dependencies. For example, to install a package named example-package, use:
+```bash
+pip install example-package
+```
+To leave the virtual environment and return to your system's Python environment, you can deactivate it. Simply run:
+```bash
+deactivate
+```
+
+If you no longer need the virtual environment, you can delete it. Ensure the virtual environment is deactivated first. Then, you can remove the entire directory:
+```bash
+rm -r .venv
+```
+This example is to show you how this would work with base python. However, we can use PDM to both create a .venv and install the packages from a pyproject.toml file, so you dont need to manage it with pip and write the dependencies down in a requirements.txt file, adding version constraints manually.
 
 #### 1. PDM centralizes dependencies in pyproject.toml
 
