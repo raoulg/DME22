@@ -3,11 +3,7 @@ title: Classes and object-oriented programming in Python
 author: Raoul Grouls & Jan-Willem Lankhaar
 format:
   html:
-    toc: true
-    mermaid-format: png
     self-contained: true
-  pdf:
-    toc: true
 execute:
   eval: false
 ---
@@ -29,11 +25,9 @@ It is often stated that in Python everything is an object. This is easy said, bu
 
 # Object-oriented programming: objects and classes
 
-## Everything is an object 
+## Everything is an object
 
-In Python, an object groups related data and functions in a single unit. 
-
-![Objects group related data and functions](les6-classes_files/figure-html/mermaid-figure-1.png){width="200px"}
+In Python, an object groups related data and functions in a single unit.
 
 Since, everything is an object in Python, the string `"hello world"` should also be an object.
 
@@ -43,25 +37,25 @@ s = "hello world"
 
 ```
 
-It is obvious what the *data part* of the object `s` is: the sequence of characters  <kbd>h</kbd><kbd>e</kbd><kbd>l</kbd><kbd>l</kbd><kbd>o</kbd><kbd> </kbd><kbd>w</kbd><kbd>o</kbd><kbd>r</kbd><kbd>l</kbd><kbd>d</kbd>. 
+It is obvious what the *data part* of the object `s` is: the sequence of characters  <kbd>h</kbd><kbd>e</kbd><kbd>l</kbd><kbd>l</kbd><kbd>o</kbd><kbd> </kbd><kbd>w</kbd><kbd>o</kbd><kbd>r</kbd><kbd>l</kbd><kbd>d</kbd>.
 
 The *behavior part* of `s` neither comes as a great surprise because it is well known that you can operate on strings in several ways using the `.`-notation:
 
 ```{python}
-s.capitalize()        
+s.capitalize()
 # 'Hello world'
 
 s.upper()
 # 'HELLO WORLD'
 
-s.replace('world', 'everyone')   
+s.replace('world', 'everyone')
 # 'hello everyone'
 
 ```
 
 So the object `s` bundles a sequence of characters and a set of functions that operate on sequences of characters.
 
-The term 'object' corresponds fairly well with how we interpret the term in daily live. In daily practice, objects are things you can manipulate. The same goes for objects in Python. 
+The term 'object' corresponds fairly well with how we interpret the term in daily live. In daily practice, objects are things you can manipulate. The same goes for objects in Python.
 
 ## Object-oriented programming
 
@@ -77,7 +71,7 @@ Apart from inheritance, we won't dive into the details of these concepts here.
 
 Objects may differ in what data they can store as well as in their behavior. The structure and behavior of an object is governed by its *class*. Hence, a class is often called the blueprint of an object. Along the same line, an object is called an *instance* of a class.
 
-The `type` function reveals the class of an object (i.e. its type). The terms class and type can more or less be used interchangeably. 
+The `type` function reveals the class of an object (i.e. its type). The terms class and type can more or less be used interchangeably.
 
 ```{python}
 
@@ -129,7 +123,7 @@ The function attributes of a class are called *methods*. However, apart from the
 
 ## How to write classes
 
-What makes object-oriented programming languages so powerful is that you can define your own classes. 
+What makes object-oriented programming languages so powerful is that you can define your own classes.
 
 If, for example, you work with graphical or geographical data, it might come in handy to be able to manipulate points and coordinates. Let's define our own `Coordinates` class.
 
@@ -144,7 +138,7 @@ class Coordinates:
 
 ```
 
-Note that this is only the blueprint (the design) of the class. We will take a closer look at the exact meaning of the code below. If we execute the code nothing seems to happen. 
+Note that this is only the blueprint (the design) of the class. We will take a closer look at the exact meaning of the code below. If we execute the code nothing seems to happen.
 
 We can create an object (i.e. an instance) of our newly created class:
 
@@ -164,7 +158,7 @@ type(c)
 
 dir(c)
 
-# ['__class__',  
+# ['__class__',
 #  '__delattr__',
 #  '__dict__',
 #
@@ -180,7 +174,7 @@ Note that in addition to our attributes `x` and `y` (the actual coordinates), ou
 
 ## A closer look at the class definition
 
-Let's take a closer look at our class definition. After the headline `class Coordinate:`, we can define one or more methods at the next indentation level. In this case, we defined a single method with a special name `__init__()`. 
+Let's take a closer look at our class definition. After the headline `class Coordinate:`, we can define one or more methods at the next indentation level. In this case, we defined a single method with a special name `__init__()`.
 
 Almost every class defines an `__init__()` method. The `__init__()` method is called when a new object of a class is instantiated. So when we instantiated object `c`:
 
@@ -196,11 +190,11 @@ c = Coordinates.__init__(..., 10, 15)         # For now, ignore the ...
 
 This is more or less the case because we ignored the argument with the peculiar name `self`. Every method of a class (except class and static methods we will talk about later) is assumed to have at least one argument and this argument represents the instance of the class (i.e. the object). This argument is almost always given the name `self`.
 
-The `self` argument gives us access to the object attributes, i.e. its variables and methods. Because it represents an object we use the `.`-notation for that. For example `self.x` and `self.y` give us access to the object attributes `x` and `y` regardless of 'where we are in the class'. 
+The `self` argument gives us access to the object attributes, i.e. its variables and methods. Because it represents an object we use the `.`-notation for that. For example `self.x` and `self.y` give us access to the object attributes `x` and `y` regardless of 'where we are in the class'.
 
 This also holds for methods. If our class would have defined another method `special_coordinate_operation()`, we could have referred to it from within the class by `self.special_coordinate_operation()`.
 
-Note that `self` is an internal name. It is only used *within* the class. Outside it we use the object name. So within the methods of object `c` we use `self.x` to refer to `c.x` and `self.y` to refer to `c.y`. 
+Note that `self` is an internal name. It is only used *within* the class. Outside it we use the object name. So within the methods of object `c` we use `self.x` to refer to `c.x` and `self.y` to refer to `c.y`.
 
 Now that we understand the role of the `self` argument, we are able to understand the definition of the `__init__`-method:
 
@@ -234,17 +228,17 @@ print(f'Now our point moved to ({c.x}, {c.y})')
 # Now our point moved to (15, 15)
 
 ```
-Though nice this is of limited use because we haven't defined any behavior in our class yet. We could have accomplished the same using a tuple or a dictionary: 
+Though nice this is of limited use because we haven't defined any behavior in our class yet. We could have accomplished the same using a tuple or a dictionary:
 
 ```{python}
 # A tuple:
 (10, 15)        # Convention: (x, y)
 
-# A dictionary: 
+# A dictionary:
 c = { 'x': 10, 'y': 15 }
 ```
 
-Let's say that we have a special requirement and we want to able to do some basic transformations on the coordinates: we want to mirror them easily in the $x$ and $y$ axis. 
+Let's say that we have a special requirement and we want to able to do some basic transformations on the coordinates: we want to mirror them easily in the $x$ and $y$ axis.
 
 We can define our own methods to accomplish this:
 
@@ -278,11 +272,11 @@ print(f'Now c is mirror in the y axis as well: ({c.x}, {c.y})')
 
 ## 'Dunder' methods
 
-As you may have noticed from the output of the `dir()` statements, each class contains a number of attributes enclosed by double underscores (e.g. `__le__`). These so-called 'dunder' attributes define default behavior that you can override. We will focus on the dunder methods here. 
+As you may have noticed from the output of the `dir()` statements, each class contains a number of attributes enclosed by double underscores (e.g. `__le__`). These so-called 'dunder' attributes define default behavior that you can override. We will focus on the dunder methods here.
 
-These dunder methods provide very powerful and elegant functionality. Many of these methods are called under the hood when you issue a built-in function. 
+These dunder methods provide very powerful and elegant functionality. Many of these methods are called under the hood when you issue a built-in function.
 
-For example, on a `list` object, the built-in `len()` function calls the `list.__len__()` method under the hood. In the same way, the `str()` function calls the `__str__()` method of an object. 
+For example, on a `list` object, the built-in `len()` function calls the `list.__len__()` method under the hood. In the same way, the `str()` function calls the `__str__()` method of an object.
 
 Thus, if we define dunder methods in our class, Python calls these methods when we issue built-in functions on our object.
 
@@ -294,7 +288,7 @@ import math
 class Coordinates:
   def __init__(self):
     ...
-  
+
   def __abs__(self):
     """Return the vector length of the coordinate pair with respect to the origin"""
     return math.sqrt(self.x**2 + self.y**2)
@@ -319,7 +313,7 @@ import math
 class Coordinates:
   def __init__(self):
     ...
-  
+
   def __abs__(self):
     ...
 
@@ -357,16 +351,16 @@ More information on the dunder methods you can define (or, formally more correct
 
 # Relationship between classes
 
-One of the reasons why object-oriented programming has been so pervasive and successful in programming for such a long time, is that you can relate classes to each other. Especially, the concept of inheritance is very powerful. It enables classes to inherit attributes from each other. 
+One of the reasons why object-oriented programming has been so pervasive and successful in programming for such a long time, is that you can relate classes to each other. Especially, the concept of inheritance is very powerful. It enables classes to inherit attributes from each other.
 
-Suppose that, in addition to our `Coordinates` class, we want to define another class `Shape` that defines geometric shapes. 
+Suppose that, in addition to our `Coordinates` class, we want to define another class `Shape` that defines geometric shapes.
 
 We could do that as follows:
 
 ```{python}
 class Shape:
   shape_type = 'Shape'
-  
+
   def __init__(self, anchor_point: Coordinates, color: str):
     self.anchor_point = anchor_point
     self.color = color
@@ -380,9 +374,9 @@ class Shape:
     self.color = new_color
 ```
 
-Note the variable `shape_type`. It is a class variable (instead of an instance). All objects of this class refer to the same value. 
+Note the variable `shape_type`. It is a class variable (instead of an instance). All objects of this class refer to the same value.
 
-This class is fairly general. It may not be very practical in daily use. Perhaps we want to be a bit more concrete and use a rectangle object in our code. A rectangle has a width and a height. Let's assume that the upper left corner of our rectangle is our anchor point. 
+This class is fairly general. It may not be very practical in daily use. Perhaps we want to be a bit more concrete and use a rectangle object in our code. A rectangle has a width and a height. Let's assume that the upper left corner of our rectangle is our anchor point.
 
 Using class inheritance we can inherit the properties of `Shape` in a new class `Rectangle`.
 
@@ -432,28 +426,28 @@ print(r.anchor_point)
 # (4.000, 2.000)
 ```
 
-We are able to use the `move` attribute because the `Rectangle` class is a *subclass* of the `Shape` class and automatically inherited all properties of `Shape`. 
+We are able to use the `move` attribute because the `Rectangle` class is a *subclass* of the `Shape` class and automatically inherited all properties of `Shape`.
 
 ```{python}
 dir(r)
 
-# ['__class__', 
-# '__delattr__', 
-# 
+# ['__class__',
+# '__delattr__',
+#
 #   ...
-# 
-# 'anchor_point', 
-# 'area', 
-# 'change_color', 
-# 'color', 
-# 'height', 
-# 'move', 
-# 'shape_type', 
+#
+# 'anchor_point',
+# 'area',
+# 'change_color',
+# 'color',
+# 'height',
+# 'move',
+# 'shape_type',
 # 'width']
 
 ```
 
-We can extend this further by also subclassing the `Rectangle` class. Let's say we want to have a `Square` class, which is obviously a special type of rectangle. 
+We can extend this further by also subclassing the `Rectangle` class. Let's say we want to have a `Square` class, which is obviously a special type of rectangle.
 
 ```{python}
 class Square(Rectangle):
@@ -461,17 +455,17 @@ class Square(Rectangle):
     super().__init__(width=width, height=width, color=color)    # Call the Rectangle.__init__
 ```
 
-So, now our `Square` class inherits all properties of `Rectangles` as well as all properties of `Shape`. 
+So, now our `Square` class inherits all properties of `Rectangles` as well as all properties of `Shape`.
 
-In addition to inheriting properties, all subclasses can serve as full representatives of their superclasses. So if your code needs expects a shape class at a certain point, you may as well insert a `Square`-object. This is an example of what is called *polymorphism*. 
+In addition to inheriting properties, all subclasses can serve as full representatives of their superclasses. So if your code needs expects a shape class at a certain point, you may as well insert a `Square`-object. This is an example of what is called *polymorphism*.
 
 The encapsulation, inheritance and polymorphism principles make object-oriented programming a very powerful paradigm. It enables a lot of abstraction and re-use of functionality.
 
 ## The pedigree of classes
 
-In Python, all classes descend from either the `object` or the `Exception` class. That's why you will find a log of attributes you didn't define yourself when you define a new class. 
+In Python, all classes descend from either the `object` or the `Exception` class. That's why you will find a log of attributes you didn't define yourself when you define a new class.
 
-As we have already seen, you can use the built-in `type()` function to see of what class a certain object is. However, this will only return its class name. It doesn't tell anything about its ascendents. Because of polymorphism you sometimes need to check whether a class descends from a certain class. 
+As we have already seen, you can use the built-in `type()` function to see of what class a certain object is. However, this will only return its class name. It doesn't tell anything about its ascendents. Because of polymorphism you sometimes need to check whether a class descends from a certain class.
 
 If, for example, we obtain a `Square`-object, we might want to know whether it can serve as a `Shape`. We can use the `isinstance()` function for that.
 
@@ -514,9 +508,9 @@ class InventoryItem:
 
     def total_cost(self) -> float:
         return self.unit_price * self.quantity_on_hand
-``` 
+```
 
-Note that no (explicit) `__init__()`-method is needed. 
+Note that no (explicit) `__init__()`-method is needed.
 
 Especially for data analysis projects, data classes may come in as a handy tool to define simple data structures.
 
@@ -532,9 +526,9 @@ Consider using classes if you have:
 
 - **Logical units**. If you are able to discriminate logical units, entities, concepts or objects in your (business) problem and it would make life easier if you are able to manipulate these.
 - **Repeated function arguments**. It can be an important signal if you repeat the same function arguments over and over again. It may make life easier if you group these functions into a class and make the data available within it.
-- **When you have to**. For some libraries it is required to use classes. For example, some packages require that you define your model in a class. 
+- **When you have to**. For some libraries it is required to use classes. For example, some packages require that you define your model in a class.
 - **Custom exceptions**. These types of classes are trivial to define but they may make your code much more robust. Refer to the Python documentation to learn more about `Exception` classes.
 
-In some programming languages, it is very common to always use classes. In Java, for example, it is even required. In Python, it is certainly not a must. Often, just a 'bag of functions' is sufficient. 
+In some programming languages, it is very common to always use classes. In Java, for example, it is even required. In Python, it is certainly not a must. Often, just a 'bag of functions' is sufficient.
 
 However, if used properly, classes may provide very useful functionality and a lot of power to your code.

@@ -3126,35 +3126,10 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 
 </head>
 
-<body>
+<body class="fullcontent">
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-  <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#what-you-will-learn" id="toc-what-you-will-learn" class="nav-link" data-scroll-target="#what-you-will-learn">What you will learn</a></li>
-  <li><a href="#object-oriented-programming-objects-and-classes" id="toc-object-oriented-programming-objects-and-classes" class="nav-link" data-scroll-target="#object-oriented-programming-objects-and-classes">Object-oriented programming: objects and classes</a>
-  <ul class="collapse">
-  <li><a href="#everything-is-an-object" id="toc-everything-is-an-object" class="nav-link" data-scroll-target="#everything-is-an-object">Everything is an object</a></li>
-  <li><a href="#object-oriented-programming" id="toc-object-oriented-programming" class="nav-link" data-scroll-target="#object-oriented-programming">Object-oriented programming</a></li>
-  <li><a href="#classes-define-objects" id="toc-classes-define-objects" class="nav-link" data-scroll-target="#classes-define-objects">Classes define objects</a></li>
-  <li><a href="#how-to-write-classes" id="toc-how-to-write-classes" class="nav-link" data-scroll-target="#how-to-write-classes">How to write classes</a></li>
-  <li><a href="#a-closer-look-at-the-class-definition" id="toc-a-closer-look-at-the-class-definition" class="nav-link" data-scroll-target="#a-closer-look-at-the-class-definition">A closer look at the class definition</a></li>
-  <li><a href="#adding-behavior" id="toc-adding-behavior" class="nav-link" data-scroll-target="#adding-behavior">Adding behavior</a></li>
-  <li><a href="#dunder-methods" id="toc-dunder-methods" class="nav-link" data-scroll-target="#dunder-methods">‘Dunder’ methods</a></li>
-  </ul></li>
-  <li><a href="#relationship-between-classes" id="toc-relationship-between-classes" class="nav-link" data-scroll-target="#relationship-between-classes">Relationship between classes</a>
-  <ul class="collapse">
-  <li><a href="#the-pedigree-of-classes" id="toc-the-pedigree-of-classes" class="nav-link" data-scroll-target="#the-pedigree-of-classes">The pedigree of classes</a></li>
-  </ul></li>
-  <li><a href="#data-classes" id="toc-data-classes" class="nav-link" data-scroll-target="#data-classes">Data classes</a></li>
-  <li><a href="#using-classes-in-your-own-code" id="toc-using-classes-in-your-own-code" class="nav-link" data-scroll-target="#using-classes-in-your-own-code">Using classes in your own code</a></li>
-  </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="6.0_classes.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
-</div>
+
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -3202,12 +3177,6 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 <section id="everything-is-an-object" class="level2">
 <h2 class="anchored" data-anchor-id="everything-is-an-object">Everything is an object</h2>
 <p>In Python, an object groups related data and functions in a single unit.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="les6-classes_files/figure-html/mermaid-figure-1.png" class="img-fluid figure-img" width="200"></p>
-<figcaption class="figure-caption">Objects group related data and functions</figcaption>
-</figure>
-</div>
 <p>Since, everything is an object in Python, the string <code>&quot;hello world&quot;</code> should also be an object.</p>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">&quot;hello world&quot;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -3215,13 +3184,13 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 <p>It is obvious what the <em>data part</em> of the object <code>s</code> is: the sequence of characters <kbd>h</kbd><kbd>e</kbd><kbd>l</kbd><kbd>l</kbd><kbd>o</kbd><kbd> </kbd><kbd>w</kbd><kbd>o</kbd><kbd>r</kbd><kbd>l</kbd><kbd>d</kbd>.</p>
 <p>The <em>behavior part</em> of <code>s</code> neither comes as a great surprise because it is well known that you can operate on strings in several ways using the <code>.</code>-notation:</p>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>s.capitalize()        </span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>s.capitalize()</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;Hello world&#39;</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>s.upper()</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;HELLO WORLD&#39;</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>s.replace(<span class="st">&#39;world&#39;</span>, <span class="st">&#39;everyone&#39;</span>)   </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>s.replace(<span class="st">&#39;world&#39;</span>, <span class="st">&#39;everyone&#39;</span>)</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;hello everyone&#39;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>So the object <code>s</code> bundles a sequence of characters and a set of functions that operate on sequences of characters.</p>
@@ -3310,7 +3279,7 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span>(c)</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># [&#39;__class__&#39;,  </span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># [&#39;__class__&#39;,</span></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#  &#39;__delattr__&#39;,</span></span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#  &#39;__dict__&#39;,</span></span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
@@ -3371,7 +3340,7 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A tuple:</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>(<span class="dv">10</span>, <span class="dv">15</span>)        <span class="co"># Convention: (x, y)</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># A dictionary: </span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># A dictionary:</span></span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> { <span class="st">&#39;x&#39;</span>: <span class="dv">10</span>, <span class="st">&#39;y&#39;</span>: <span class="dv">15</span> }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s say that we have a special requirement and we want to able to do some basic transformations on the coordinates: we want to mirror them easily in the <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> axis.</p>
@@ -3415,7 +3384,7 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Coordinates:</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    ...</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">__abs__</span>(<span class="va">self</span>):</span>
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;Return the vector length of the coordinate pair with respect to the origin&quot;&quot;&quot;</span></span>
 <span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> math.sqrt(<span class="va">self</span>.x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="va">self</span>.y<span class="op">**</span><span class="dv">2</span>)</span>
@@ -3438,7 +3407,7 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Coordinates:</span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    ...</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">__abs__</span>(<span class="va">self</span>):</span>
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    ...</span>
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
@@ -3480,7 +3449,7 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 <div class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Shape:</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  shape_type <span class="op">=</span> <span class="st">&#39;Shape&#39;</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, anchor_point: Coordinates, color: <span class="bu">str</span>):</span>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.anchor_point <span class="op">=</span> anchor_point</span>
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.color <span class="op">=</span> color</span>
@@ -3540,18 +3509,18 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 <div class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span>(r)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># [&#39;__class__&#39;, </span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;__delattr__&#39;, </span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># [&#39;__class__&#39;,</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;__delattr__&#39;,</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
 <span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   ...</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;anchor_point&#39;, </span></span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;area&#39;, </span></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;change_color&#39;, </span></span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;color&#39;, </span></span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;height&#39;, </span></span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;move&#39;, </span></span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;shape_type&#39;, </span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;anchor_point&#39;,</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;area&#39;,</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;change_color&#39;,</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;color&#39;,</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;height&#39;,</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;move&#39;,</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;shape_type&#39;,</span></span>
 <span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;width&#39;]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can extend this further by also subclassing the <code>Rectangle</code> class. Let’s say we want to have a <code>Square</code> class, which is obviously a special type of rectangle.</p>
