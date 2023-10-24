@@ -72,7 +72,7 @@ This is the stage where the code will be used in production. It is now important
 
 For every standard, we have a possible classifier. The classifiers are:
 
-- 🐌 : at this stage, this standard will slow you down
+- 🐌 : at this stage, this standard might slow you down
 - 💡 : at this stage, this standard is probably a good idea
 - 🏅 : at this stage, this standard is a must
 

@@ -16,10 +16,6 @@ pre-commit:
       glob: '*.toml'
       run: pdm run toml-sort {staged_files}
       stage_fixed: true
-    mdformat:
-      glob: '*.md'
-      run: pdm run mdformat {staged_files}
-      stage_fixed: true
     ruff:
       files: git ls-files
       glob: '*.py'
@@ -43,11 +39,6 @@ pre-merge:
     toml-sort:
       glob: '*.toml'
       run: pdm run toml-sort {all_files}
-      stage_fixed: true
-    mdformat:
-      files: git ls-files
-      glob: '*.md'
-      run: pdm run mdformat {files}
       stage_fixed: true
     ruff:
       glob: '*.py'
