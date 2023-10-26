@@ -12,10 +12,6 @@ pre-commit:
       glob: '*.ipynb'
       run: pdm run jupyter nbconvert --clear-output --inplace {staged_files}
       stage_fixed: true
-    toml-sort:
-      glob: '*.toml'
-      run: pdm run toml-sort {staged_files}
-      stage_fixed: true
     ruff:
       files: git ls-files
       glob: '*.py'
@@ -35,10 +31,6 @@ pre-merge:
     clean-jupyter:
       glob: '*.ipynb'
       run: pdm run jupyter nbconvert --clear-output --inplace {all_files}
-      stage_fixed: true
-    toml-sort:
-      glob: '*.toml'
-      run: pdm run toml-sort {all_files}
       stage_fixed: true
     ruff:
       glob: '*.py'

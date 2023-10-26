@@ -31,10 +31,10 @@ dependencies = [
     "pydeck>=0.8.0",
     "jupyter>=1.0.0",
     "fitter>=1.6.0",
-    "mads-datasets>=0.3.4",
+    "mads-datasets[torch]>=0.3.10",
     "pandas-stubs>=2.0.3.230814",
 ]
-requires-python = ">=3.11"
+requires-python = ">=3.10"
 readme = "README.md"
 license = {text = "MIT"}
 
